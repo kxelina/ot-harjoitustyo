@@ -5,6 +5,7 @@
 *hello!*
 ~~hello~~
 >quote
-rbg(255,255,255) hello
+    `rgb(255,255,255)` hello
+hello
 
 

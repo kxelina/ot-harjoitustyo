@@ -5,7 +5,7 @@
 *hello!*
 ~~hello~~
 >quote
-    `rgb(255,255,255)` hello
+    `rgb(255,102,178)` hello
 hello
 
 

@@ -4,7 +4,6 @@
 **hello**
 *hello!*
 ~~hello~~
-    `rgb(255,102,178)` hello
-hello
+$${\color{red}hello}$$
 
 

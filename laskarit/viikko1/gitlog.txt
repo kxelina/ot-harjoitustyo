@@ -1,0 +1,149 @@
+commit 9ae19d46248ce5558f18fc52e8e036feda8de3c7 
+
+Author: kxelina <elina88.k@gmail.com> 
+
+Date:   Thu Mar 16 12:43:06 2023 +0200 
+
+  
+
+    muutoksia 
+
+  
+
+tiedostoja/file22.txt | 0 
+
+tiedostoja/file3.txt  | 1 + 
+
+2 files changed, 1 insertion(+) 
+
+  
+
+commit 252df4894d9cb9104d08b0c02277b60cace4a8bc 
+
+Author: kxelina <elina88.k@gmail.com> 
+
+Date:   Thu Mar 16 12:22:17 2023 +0200 
+
+  
+
+    muutos 
+
+  
+
+tiedosto.txt => eka.txt | 0 
+
+1 file changed, 0 insertions(+), 0 deletions(-) 
+
+  
+
+commit f35a1da58d1e34f555e2250f4addd3b9f8451159 
+
+Author: kxelina <elina88.k@gmail.com> 
+
+Date:   Thu Mar 16 12:20:47 2023 +0200 
+
+  
+
+    poisto 
+
+  
+
+tiedosto.txt | 5 +---- 
+
+toinen.txt   | 1 - 
+
+2 files changed, 1 insertion(+), 5 deletions(-) 
+
+  
+
+commit 4f65718a28b6c33fba0938811f35eb4fe78c82e2 
+
+Author: kxelina <elina88.k@gmail.com> 
+
+Date:   Thu Mar 16 12:16:47 2023 +0200 
+
+  
+
+    muokkaus 
+
+  
+
+tiedosto.txt | 440 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+1 file changed, 440 insertions(+) 
+
+  
+
+commit 3935e5d9e276de8f100197b0ae8a5e5ed9833548 
+
+Author: kxelina <elina88.k@gmail.com> 
+
+Date:   Wed Mar 15 14:20:44 2023 +0200 
+
+  
+
+    kansiot 
+
+  
+
+kolmas.txt | 1 + 
+
+toinen.txt | 1 + 
+
+2 files changed, 2 insertions(+) 
+
+  
+
+commit a50e97f07c96720402d6872f295891e5300730f3 
+
+Author: kxelina <elina88.k@gmail.com> 
+
+Date:   Wed Mar 15 14:16:56 2023 +0200 
+
+  
+
+    uusi tiedosto 
+
+  
+
+kolmas.txt | 0 
+
+1 file changed, 0 insertions(+), 0 deletions(-) 
+
+  
+
+commit 0760a12d0d46372bbc131fc65c227bcc9f142a61 
+
+Author: kxelina <elina88.k@gmail.com> 
+
+Date:   Wed Mar 15 14:14:19 2023 +0200 
+
+  
+
+    muutos ja lisäys 
+
+  
+
+tiedosto.txt | 2 ++ 
+
+toinen.txt   | 0 
+
+2 files changed, 2 insertions(+) 
+
+  
+
+commit f86bd6732b593258cf05e5c7b47783ad245e3d9f 
+
+Author: kxelina <elina88.k@gmail.com> 
+
+Date:   Wed Mar 15 14:10:15 2023 +0200 
+
+  
+
+    tiedosto.txt luotu 
+
+  
+
+tiedosto.txt | 0 
+
+1 file changed, 0 insertions(+), 0 deletions(-) 

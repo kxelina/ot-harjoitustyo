@@ -7,7 +7,7 @@ Pelissä on easy mode:ssa 10x4 korttia eli yksi korttipakka, missä on vain nume
 Käyttäjät ovat pelin pelaajia.
 
 ## Käyttöliittymäluonnos
-
+[IMG_5206.jpg](./~kuvat)
 
 ## Perusversion tarjoama toiminnallisuus
 - On tervetuloa sivu, missä on how to play-ohje

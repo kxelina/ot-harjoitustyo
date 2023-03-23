@@ -1,5 +1,5 @@
-# Ohjelmistotekniikka, harjoitustyö
-## Tehtävät
+# Ohjelmistotekniikka, Muistipeli
+## Laskarit
 ###### Viikko 1
 **hello**
 *hello!*
@@ -11,3 +11,8 @@ $${\color{red}linkit:}$$
 
 
 [komentorivi.txt](./laskarit/viikko1/komentorivi.txt)
+
+
+## Dokumentaatio
+- [vaatimusmaarittely.md](./dokumentaatio/vaatimusmaarittely.md)
+- [tyoaikakirjanpito.txt](./dokumentaatio/tyoaikakirjanpito.txt)

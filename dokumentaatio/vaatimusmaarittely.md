@@ -24,3 +24,6 @@ Näitä muutoksia tehdään, siiten kun perusversio on tehty ja on aikaa kehitel
 - pelaaja voi valita eri teeman korteille
 - pelaaja voi valita yleisesti teeman pelinäkymälle
 - miten kortit poistuu näytöstä (eri animaatioita)
+- väärän kortin valitseminen johtaa yhteen vähennettyyn pisteeseen
+- vinkki nappula
+- korttien paikka muuttuu extra hard versiossa

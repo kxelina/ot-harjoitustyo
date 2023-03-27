@@ -19,3 +19,4 @@ class Pelaaja --> class Noppa{
     Ruutu: omistaja (pelaaja)
     Ruutu: arvo int
 } --> class Nappula
+```

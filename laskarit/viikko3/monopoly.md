@@ -4,23 +4,26 @@ title: Monopoly
 ---
 classDiagram
     class Pelaaja{
-    Pelaaja : nimi
-    Pelaaja : raha (amount) int
-    Pelaaja : nappula (2-8)
-}
+    -nimi
+    -raha (amount) int
+    -nappula (2-8)
+    }
     class Noppa{
-    Noppa: nimi (1/2)
-    Noppa: arvo (0-6) int
-}
+    -nimi (1/2)
+    -arvo (0-6) int
+    }
     class Pelilauta{
-    Pelilauta: ruudut[40]
-}   class Ruutu{
-    Ruutu: numero (1-40) int
-    Ruutu: omistaja (pelaaja)
-    Ruutu: arvo int
-} 
+    -ruudut[40]
+    }
+    class Ruutu{
+    -numero (1-40) int
+    -omistaja (pelaaja)
+    -arvo int
+    } 
+Pelaaja --|> Nappula 
+Nappula --> Pelilauta
+Pelilauta --|> Ruutu
+Ruutu --> Nappula
+Pelaaja --> Noppa
 
-
-class Pelaaja --|> class Nappula --> class Pelilauta --|> class Ruutu --> class Nappula
-class Pelaaja --> class Noppa
- ```
+```

@@ -15,4 +15,4 @@ $${\color{red}linkit:}$$
 
 ## Dokumentaatio
 - [vaatimusmaarittely.md](./dokumentaatio/vaatimusmaarittely.md)
-- [tyoaikakirjanpito.txt](./dokumentaatio/tyoaikakirjanpito.txt)
+- [tyoaikakirjanpito.md](./dokumentaatio/tyoaikakirjanpito.md)

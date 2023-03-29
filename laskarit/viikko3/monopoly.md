@@ -4,29 +4,6 @@ title: Monopoly
 ---
 classDiagram
     class Pelaaja{
-<<<<<<< HEAD
-    Pelaaja : nimi
-    Pelaaja : raha (amount) int
-    Pelaaja : nappula (2-8)
-    }
-    class Noppa{
-    Noppa: nimi (1/2)
-    Noppa: arvo (0-6) int
-    }
-    class Pelilauta{
-    Pelilauta: ruudut[40]
-    }
-    class Ruutu{
-    Ruutu: numero (1-40) int
-    Ruutu: omistaja (pelaaja)
-    Ruutu: arvo int
-    } 
-
-
-class Pelaaja --|> class Nappula --> class Pelilauta --|> class Ruutu --> class Nappula
-class Pelaaja --> class Noppa
- ```
-=======
     -nimi
     -raha (amount) int
     -nappula (2-8)
@@ -90,4 +67,4 @@ Ruutu --|> Asemat_ja_laitokset
 Normaalit_kadut --> Hotelli
 Normaalit_kadut --> Talo
 ```
->>>>>>> 9c4f467fcb31fd54737a11271e8f8249e7dd85c5
+

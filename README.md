@@ -14,6 +14,10 @@
 ###### Viikko 3
 [monopoly.md](./laskarit/viikko3/monopoly.md)
 
+[sekvenssikaavio_machine.md](./laskarit/viikko3/sekvenssikaavio_machine.md)
+
+[sekvenssikaavio_hsl.md](./laskarit/viikko3/sekvenssikaavio_hsl.md)
+
 ## Dokumentaatio
 - [vaatimusmaarittely.md](./dokumentaatio/vaatimusmaarittely.md)
 - [tyoaikakirjanpito.md](./dokumentaatio/tyoaikakirjanpito.md)

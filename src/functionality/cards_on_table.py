@@ -1,4 +1,5 @@
 from enum import Enum
+import random
 
 class Card_deck:
     def __init__(self, level):
@@ -16,28 +17,32 @@ class Card_deck:
     def show_deck(self):
         return self.deck
 
-    def print_deck(self):
+    def debug_print_deck(self):
         for i in self.deck:
-    
-            print(f'{i.suitname()}-{i.value()} ')
+            
+            print(i.to_string())
 
     def shuffle(self):
-        shuffled_deck=self.deck.shuffle()
-        return shuffled_deck
+        random.shuffle(self.deck)
+        
 
 class Card:
     def __init__(self, suit, value):
-        self._suit=suit
-        self._value=value
+        self.suit=suit
+        self.value=value
    
-    def suit(self):
-        return self._suit
     
     def suitname(self):
-        return self._suit.name
+        return self.suit.name
     
-    def value(self):
-        return self._value
+    
+    def to_string(self):
+        return f'{self.suitname()}-{self.value}'
+    
+    def is_same(self, card):
+        if self.suit == card.suit and self.value == card.value:
+            return True
+        return False
 
 class Suit(Enum):
     spade=1

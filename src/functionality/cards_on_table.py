@@ -18,18 +18,31 @@ class Card_deck:
 
     def print_deck(self):
         for i in self.deck:
-            print(i)
+    
+            print(f'{i.suitname()}-{i.value()} ')
 
     def shuffle(self):
-        self.deck.shuffle()
+        shuffled_deck=self.deck.shuffle()
+        return shuffled_deck
 
 class Card:
     def __init__(self, suit, value):
         self._suit=suit
         self._value=value
+   
+    def suit(self):
+        return self._suit
+    
+    def suitname(self):
+        return self._suit.name
+    
+    def value(self):
+        return self._value
 
 class Suit(Enum):
     spade=1
     diamond=2
     heart=3
     club=4
+
+   

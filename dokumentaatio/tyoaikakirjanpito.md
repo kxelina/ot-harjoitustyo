@@ -7,7 +7,7 @@
 | 31.3. | 3   | jatkoin ui:n tekemistä|
 |  1.4     | 4    | aloitin tekee pelin toimintoa eli kortit pöydälle ja aloitin tekemään testejä |
 |   2.4    | 4   | tein lisää testejä ja jatkoin tekemään pelin toimintoa|
-| 21.4. | 0    | |
+| 7.4. | 5    | tein perustoimintoja pelille vaatimusmäärittelystä |
 |       | 0    | |
 | 4.5.  | 0    | |
 | 5.5.  | 0    |  |

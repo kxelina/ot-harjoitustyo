@@ -8,9 +8,9 @@
 |  1.4     | 4    | aloitin tekee pelin toimintoa eli kortit pöydälle ja aloitin tekemään testejä |
 |   2.4    | 4   | tein lisää testejä ja jatkoin tekemään pelin toimintoa|
 | 7.4. | 5    | tein perustoimintoja pelille vaatimusmäärittelystä |
-|       | 0    | |
-| 4.5.  | 0    | |
-| 5.5.  | 0    |  |
+|    9.4   | 3    | sain kortit näkyville easyview:lle|
+| 10.4.  | 8    | tein pelin logiikkaa ja peli toimii easy mode:ssa|
+|   | 0    |  |
 |       | 0    ||
-| 6.5.  | 0    | |
-| yht   | 0   | | 
+|  | 0    | |
+| yht   | 39  | | 

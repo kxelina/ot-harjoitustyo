@@ -7,7 +7,6 @@ class UI:
     def __init__(self, root):
         self._root = root
         self._current_view = None
-        
 
     def start(self):
         self._show_welcome_view()
@@ -44,10 +43,10 @@ class UI:
         self._current_view = Easy_view(
             self._root,
             self._handle_welcome,
-            
+
         )
 
-        #self._current_view.pack()
+        # self._current_view.pack()
 
     def _show_how_to_play_guide_view(self):
         self._hide_current_view()

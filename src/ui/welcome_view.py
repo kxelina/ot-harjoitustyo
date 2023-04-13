@@ -10,7 +10,7 @@ class Welcome_view:
         self._window = None
         self._frame = None
         self._handle_easy = handle_easy
-        self._handle_how_to_play =  handle_how_to_play
+        self._handle_how_to_play = handle_how_to_play
 
         self._initialize()
 

@@ -1,7 +1,8 @@
 import tkinter as tk
 import time
 
-from services.cards_on_table import Game, Card
+from services.Game import Game
+from entities.card import Card
 
 
 class Easy_view:
@@ -10,7 +11,6 @@ class Easy_view:
         self._root.geometry("1600x950")
         self._canvas = None
         self._handle_welcome = handle_welcome
-        
 
         self._initialize()
 
@@ -31,7 +31,8 @@ class Easy_view:
     #     self._frame.pack(expand=True, fill=tk.BOTH)
     #     # background=
     def canvas(self):
-        self._canvas = tk.Canvas(master=self._root, bg='white', width=1600, height=950)
+        self._canvas = tk.Canvas(
+            master=self._root, bg='white', width=1600, height=950)
         self._canvas.pack(expand=True, fill=tk.BOTH)
     #     # background=
 
@@ -46,21 +47,15 @@ class Easy_view:
         back.place(x=100, y=100)
         back.pack()
 
-
     def create_deck(self):
         game = Game("easy", self._root)
         Game.create_game(game, "easy", self)
-    
+
         Game.debug_print_deck(game)
         Game.shuffle(game)
         Game.place_cards(game)
         for card in game.deck:
             Card.create_button(card)
-   
-        game.start_time=time.time()
+
+        game.start_time = time.time()
         game.show_time()
-
-
-        
-       
-

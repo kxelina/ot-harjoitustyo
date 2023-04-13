@@ -1,5 +1,6 @@
 import tkinter as tk
 
+
 class Guide_view:
     def __init__(self, root, handle_welcome):
         self._root = root
@@ -12,8 +13,9 @@ class Guide_view:
 
     def _initialize(self):
         self.frame()
-        self.window()
+        self.label()
         self.button()
+        self.textbox()
 
     def pack(self):
         self._frame.pack(fill=tk.constants.X)
@@ -25,7 +27,7 @@ class Guide_view:
         self._frame = tk.Frame(self._root, bg='white', bd=100)
         self._frame.pack(expand=True, fill=tk.BOTH)
 
-    def window(self):
+    def label(self):
         title = tk.Label(master=self._frame, text="How to play",
                          font=("Helvetica", 20))
         title.pack()
@@ -34,3 +36,14 @@ class Guide_view:
         back = tk.Button(master=self._frame, text="back",
                          bg="pink", fg="white", command=self._handle_welcome)
         back.pack()
+
+    def textbox(self):
+        text = ''' Easy Mode: 
+        - There are 40 cards in total
+        - You have to find the pairs that have the same number
+        - You can click on two cards at a time and memorise them 
+        '''
+        textBox = tk.Text(master=self._frame, height=100, width=100)
+        textBox.insert("end", text)
+        textBox.config(state='disabled')
+        textBox.pack(expand=True)

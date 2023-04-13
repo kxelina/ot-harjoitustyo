@@ -3,3 +3,9 @@
 - tehty funktio main, joka avaa ui ikkunan
 - aloitettu card_deck luokkaa, joka vastaa pelin logiikan ja toimintoa
 - Lisätty testi, joka testaa korttien oikean määrän, oikean järjestyksen ja korttien sekoituksen
+## viikko 4
+- tein perustoimintoa pelille
+- kortit näkyy Easymode:ssa
+- pelaaja pystyy pelaamaan muistipeliä (voi valita parit ja kortit poistetaan, jos pari löytyy)
+- laitettu ajastin, mutta ei toimi vielä kunnolla
+- laitettu lisää testejä

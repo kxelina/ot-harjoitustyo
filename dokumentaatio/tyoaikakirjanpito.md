@@ -10,7 +10,7 @@
 | 7.4. | 5    | tein perustoimintoja pelille vaatimusmäärittelystä |
 |    9.4   | 3    | sain kortit näkyville easyview:lle|
 | 10.4.  | 8    | tein pelin logiikkaa ja peli toimii easy mode:ssa|
-|   | 0    |  |
+| 13.4  | 2    | tein how to play sivua, muokkasin koodia siistimmäksi pylintillä  |
 |       | 0    ||
 |  | 0    | |
 | yht   | 39  | | 

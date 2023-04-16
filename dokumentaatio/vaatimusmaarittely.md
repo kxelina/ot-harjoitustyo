@@ -9,7 +9,7 @@ Pelissä on easy mode:ssa 10x4 korttia eli yksi korttipakka, jossa on vain numer
 ## Perusversion tarjoama toiminnallisuus
 - On tervetuloa sivu, missä on how to play-ohje **tehty**
 - aluksi pelissä on vain easy mode **tehty**
-- siinä on 40 korttia**tehty**
+- siinä on 40 korttia **tehty**
 - pitää valita 2 korttia samalla vuorolla ja yrittää saada parin **tehty**
 - siinä on ajastin, joka laskee pelin suoritusajan
 

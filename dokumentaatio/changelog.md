@@ -9,3 +9,4 @@
 - pelaaja pystyy pelaamaan muistipeliä (voi valita parit ja kortit poistetaan, jos pari löytyy)
 - laitettu ajastin, mutta ei toimi vielä kunnolla
 - laitettu lisää testejä
+- eroteltu käyttöliitymän pois pelilogiikasta

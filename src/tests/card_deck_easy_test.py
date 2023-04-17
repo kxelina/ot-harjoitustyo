@@ -37,9 +37,9 @@ class TestCard_deck(unittest.TestCase):
         self.assertEqual(newgame.deck[0].row, 0)
         self.assertEqual(newgame.deck[-1].column, 9)
         self.assertEqual(newgame.deck[-1].row, 3)
-        self.assertEqual(newgame.deck[0].button_place_x, 50)
-        self.assertEqual(newgame.deck[0].button_place_y, 100)
-        self.assertEqual(newgame.deck[-1].button_place_x, 185*9+50)
-        self.assertEqual(newgame.deck[-1].button_place_y, 200*3+100)
+        self.assertEqual(newgame.deck[0].button_place_x(), 50)
+        self.assertEqual(newgame.deck[0].button_place_y(), 100)
+        self.assertEqual(newgame.deck[-1].button_place_x(), 185*9+50)
+        self.assertEqual(newgame.deck[-1].button_place_y(), 200*3+100)
 
     # def test_

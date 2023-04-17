@@ -13,5 +13,5 @@
 | 13.4  | 2    | tein how to play sivua, muokkasin koodia siistimmäksi pylintillä  |
 |   15.4    | 2    |muokkasin sovelluslogikka ja pilokkosin luokkaa eri luokiksi, jotta sovelluslogiikka erottuu käyttöliittymästä|
 | 16.4 | 4    |muokkasin koodia, että peli toimii taas, korjasin pylint virheitä, tein uusia testejä ja korjasin vanhat testit, vaihoin tiedostoille sopivammat nimet |
-|    17.4   |     | |
-| yht   | 43  | | 
+|    17.4   |   2  | poistin koodista turhat asiat pois ja tein siistimpää koodia|
+| yht   | 45  | | 

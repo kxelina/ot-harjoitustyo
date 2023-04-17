@@ -1,5 +1,5 @@
 from ui.welcome_view import Welcome_view
-from ui.easy_view import Easy_view
+from ui.game_view import Game_view
 from ui.how_to_play_guide import Guide_view
 
 
@@ -22,14 +22,14 @@ class UI:
 
         self._current_view = Welcome_view(
             self._root,
-            self._handle_easy,
+            self._handle_game,
             self._handle_how_to_play
 
         )
         self._current_view.pack()
 
-    def _handle_easy(self):
-        self._show_easy_view()
+    def _handle_game(self):
+        self._show_game_view("easy")
 
     def _handle_welcome(self):
         self._show_welcome_view()
@@ -37,12 +37,13 @@ class UI:
     def _handle_how_to_play(self):
         self._show_how_to_play_guide_view()
 
-    def _show_easy_view(self):
+    def _show_game_view(self, mode):
         self._hide_current_view()
 
-        self._current_view = Easy_view(
+        self._current_view = Game_view(
             self._root,
             self._handle_welcome,
+            mode
 
         )
 

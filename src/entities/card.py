@@ -1,14 +1,15 @@
-import tkinter as tk
-from PIL import Image, ImageTk
-
-
 class Card:
-    def __init__(self, suit, value, view, game):
+    def __init__(self, suit, value, game):
         self.suit = suit
         self.value = value
         self.display = False
-        self.view = view
         self.game = game
+        self.ui_card = None
+        self.column = None
+        self.row = None
+
+    def set_button(self, ui_card):
+        self.ui_card = ui_card
 
     def suitname(self):
         return self.suit.name
@@ -21,58 +22,12 @@ class Card:
             return True
         return False
 
-    def handle_cardback(self):
-        self.turn_card()
-        self.game.check_card()
-        self.game.win()
+    def button_place_x(self):
+        return 185*self.column+50
 
-    def card_filename(self):
-        if self.display is False:
-            return "back.png"
-        else:
-            return f'{self.suitname().lower()}-{self.value}.png'
+    def button_place_y(self):
+        return 200*self.row+100
 
-    def card_button_place(self, x, y):
-        self.button_place_x = x
-        self.button_place_y = y
-
-    def create_button(self):
-        x = self.to_string()
-        image = self.create_image()
-        self.button = tk.Button(master=self.view._canvas, image=image,
-                                command=self.handle_cardback, width=100, height=169)
-        self.button.place(x=self.button_place_x, y=self.button_place_y)
-
-        self.button.image = image
-        print(
-            f"create card button {x}-{self.display},  {self.button_place_x}-{self.button_place_y}")
-
-    def show_card(self):
-        image = self.create_image()
-        self.button.image = image
-        self.button.config(image=image)
-
-    def create_image(self):
-        image = Image.open(f"./src/images/cards/{self.card_filename()}")
-        print(f'filename {self.card_filename()}')
-        image = image.resize((100, 169))  # 667, 1024
-        image = ImageTk.PhotoImage(image)
-
-        return image
-
-    # UI
-
-    def turn_card(self):
-        print(f"card is turned{self.display}")
-        if self.display is False:
-            self.display = True
-            print(f"käänty{self.display}")
-            self.game.counter += 1
-            self.game.show_counter()
-
-        else:
-            self.display = False
-            print(f"käänty2{self.display}")
-            self.game.show_counter()
-
-        self.show_card()
+    def set_card_on_table(self, column, row):
+        self.column = column
+        self.row = row

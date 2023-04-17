@@ -9,19 +9,16 @@ class Game:
     def __init__(self, level, root):
         self.level = level
         self.deck = []
-        self.counter = 0
-        self._root = root
         self.start_time = None
+        self._root = root
 
-    def create_game(self, level, view):
-        self.level = level
         if level == "easy":
             self.cards_per_suit = 10  # 10
         for i in range(1, self.cards_per_suit+1):
-            self.deck.append(Card(Suit.SPADE, i, view, self))
-            self.deck.append(Card(Suit.DIAMOND, i, view, self))
-            self.deck.append(Card(Suit.HEART, i, view, self))
-            self.deck.append(Card(Suit.CLUB, i, view, self))
+            self.deck.append(Card(Suit.SPADE, i, self))
+            self.deck.append(Card(Suit.DIAMOND, i, self))
+            self.deck.append(Card(Suit.HEART, i, self))
+            self.deck.append(Card(Suit.CLUB, i, self))
 
     def show_deck(self):
         return self.deck
@@ -36,17 +33,15 @@ class Game:
 
     def place_cards(self):
         counter = 1
-        x = 50
-        y = 100
+        column = 0
+        row = 0
         for card in self.deck:
-            card.card_button_place(x, y)
-            print(f"button2:{x}- {y}-  {card.to_string()}")
-            x += 185
+            card.set_card_on_table(column, row)
+            column += 1
             if counter == self.cards_per_suit:
                 counter = 0
-                x = 50
-                y += 200
-                print(f"button3:{x}- {y}")
+                column = 0
+                row += 1
             counter += 1
 
     def find_pairs(self):
@@ -56,45 +51,41 @@ class Game:
         index_list = []
         same = False
         for card in self.deck:
-
             if card.display is True:
                 visable_list.append(card)
                 index_list.append(card_counter)
                 print(f"hello:{card.to_string()}, {card_counter}")
                 if len(visable_list) == 2:
-                    print(visable_list[0], visable_list[1])
-                    if visable_list[0].value == visable_list[1].value:
-                        same = True
-                        print("same")
-                        break
-
-                    print("ei ole sama")
-                    visable_list[0].turn_card()
-                    visable_list[1].turn_card()
                     break
-
             card_counter += 1
-            print(f"{card_counter}-{card.to_string()}")
 
-        if same is True:
+        if visable_list[0].value == visable_list[1].value:
+            same = True
+            self.turn_card(visable_list[0])
+            self.turn_card(visable_list[1])
             card = self.deck.pop(index_list[1])
-            print(f"posito:{index_list[1]}-{card.to_string()}")
-            card.button.destroy()
             card = self.deck.pop(index_list[0])
-            card.button.destroy()
-            print(f"posito:{index_list[0]}-{card.to_string()}")
-        print(f"finpairs{len(visable_list)}, {index_list[:]}, {card_counter}")
+
+        return (same, visable_list[0], visable_list[1])
 
     def check_card(self):
-        if self.counter == 2:
-            self._root.update()
-            time.sleep(0.7)
-            print("onko sama")
-            self.find_pairs()
-            self.counter = 0
+        self._root.update()
+        time.sleep(0.7)
+        print("onko sama")
+        same = self.find_pairs()
 
-    def show_counter(self):
-        print(f"laskuri={self.counter}")
+        return same
+
+    def get_visable_cards(self):
+        visable_list = []
+        for card in self.deck:
+            if card.display is True:
+                visable_list.append(card)
+        return len(visable_list)
+
+    def turn_card(self, card):
+        print(f"card is turned{card.display}")
+        card.display = not card.display
 
     def win(self):
         print("check win")
@@ -107,18 +98,3 @@ class Game:
             start_time = self.start_time
             print(f"aika:{stop_time-start_time} s")
             # win is not on root
-
-    def show_time(self):
-        self.label = tk.Label(master=self._root, text="time:")
-        self.label.pack()
-        self.update_time()
-
-    def update_time(self):
-        curr_time = time.time()
-        start_time = self.start_time
-        time_label = f"{curr_time-start_time} s"
-        self.label.config(text=f"time:{time_label}")
-        self.label.after(200, self.update_time)
-
-        # if win: stop timer
-        # timer is not on root

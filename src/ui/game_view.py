@@ -69,7 +69,7 @@ class Game_view:
             UiCard(self, card, game)
 
         game.start_time = time.time()
-        game.show_time()
+        # self.show_time()
 
     def show_time(self):
         self.label = tk.Label(master=self._root, text="time:")

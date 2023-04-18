@@ -11,9 +11,12 @@ class Game:
         self.deck = []
         self.start_time = None
         self._root = root
-
         if level == "easy":
             self.cards_per_suit = 10  # 10
+
+        self.create_game()
+
+    def create_game(self):
         for i in range(1, self.cards_per_suit+1):
             self.deck.append(Card(Suit.SPADE, i, self))
             self.deck.append(Card(Suit.DIAMOND, i, self))

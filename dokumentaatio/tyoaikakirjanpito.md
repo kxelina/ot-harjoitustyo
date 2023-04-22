@@ -16,5 +16,5 @@
 |    17.4   |   2  | poistin koodista turhat asiat pois ja tein siistimpää koodia|
 |    18.4   |   2  | muokkasin vähän koodia ja muutin readme tiedostoa|
 |    21.4   |   3  | aloitin repositorin tekemisen, että voi tallentaa parhaan ajan sinne, muokkasin aika funktiota|
-|    22.4   |   5  | muokkasin ui näkymää mukavamman näköiseksi, lisäsin database connection ja initialisoinnin, näkyy top 5 parasta aikaa etusivulla|
-| yht   | 55  | | 
+|    22.4   |   7  | muokkasin ui näkymää mukavamman näköiseksi, lisäsin database connection ja initialisoinnin, näkyy top 5 parasta aikaa etusivulla|
+| yht   | 57  | | 

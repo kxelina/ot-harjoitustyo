@@ -10,3 +10,7 @@
 - laitettu ajastin, mutta ei toimi vielä kunnolla
 - laitettu lisää testejä
 - eroteltu käyttöliitymän pois pelilogiikasta
+## viikko 5
+- UI :ta muokattu
+- lisätty database:iin pelin suoritus ajat
+- top 5 parasta aikaa näkyy welcome sivulla

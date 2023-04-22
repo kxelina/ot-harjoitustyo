@@ -11,14 +11,14 @@ Pelissä on easy mode:ssa 10x4 korttia eli yksi korttipakka, jossa on vain numer
 - aluksi pelissä on vain easy mode **tehty**
 - siinä on 40 korttia **tehty**
 - pitää valita 2 korttia samalla vuorolla ja yrittää saada parin **tehty**
-- siinä on ajastin, joka laskee pelin suoritusajan
+- siinä on ajastin, joka laskee pelin suoritusajan **tehty**
 
 
 ## Jatkokehitysideoita
 Näitä muutoksia tehdään, siiten kun perusversio on tehty ja on aikaa kehitellä lisää:
 - lisätään peliin medium ja hard versio
 - lisätään 1. sivuun paras aika eli mikä on lyhyin pelin suoritusaika
-- lisätään congrats sivu voittaessaan pelin
+- lisätään congrats teksti voittaessaan pelin **tehty**
 - on kirjautumissivu
 - pelaaja voi valita eri teeman korteille
 - pelaaja voi valita yleisesti teeman pelinäkymälle

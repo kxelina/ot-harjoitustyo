@@ -2,3 +2,6 @@
 htmlcov
 .coverage
 __pycache__
+
+# data file
+data/gamestatitics.db

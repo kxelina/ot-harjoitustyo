@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "ot-harjoitustyo"
+name = "python-elinanpeli"
 version = "0.1.0"
 description = ""
 authors = ["kxelina <elina88.k@gmail.com>"]
 readme = "README.md"
-packages = [{include = "ot_harjoitustyo"}]
+
 
 [tool.poetry.dependencies]
 python = "^3.8"

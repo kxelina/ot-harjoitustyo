@@ -24,26 +24,31 @@ class Guide_view:
         self._frame.destroy()
 
     def frame(self):
-        self._frame = tk.Frame(self._root, bg='white', bd=100)
+        self._frame = tk.Frame(self._root, bg='pink', bd=100)
         self._frame.pack(expand=True, fill=tk.BOTH)
 
     def label(self):
         title = tk.Label(master=self._frame, text="How to play",
-                         font=("Helvetica", 20))
+                         font=("Times New Roman", 65), bg="pink", fg="pale violet red")
         title.pack()
 
     def button(self):
-        back = tk.Button(master=self._frame, text="back",
-                         bg="pink", fg="white", command=self._handle_welcome)
+        button_border = tk.Frame(self._frame, highlightbackground="pale violet red",
+                                 highlightthickness=3, bd=0)
+        back = tk.Button(button_border, text="Back",
+                         bg="peach puff", fg="pale violet red", command=self._handle_welcome, font=("Times New Roman", 35))
         back.pack()
+        button_border.pack(pady=20)
 
     def textbox(self):
         text = ''' Easy Mode: 
         - There are 40 cards in total
         - You have to find the pairs that have the same number
         - You can click on two cards at a time and memorise them 
+        - Match the pairs of cards in as few moves as possible
         '''
-        textBox = tk.Text(master=self._frame, height=100, width=100)
+        textBox = tk.Text(master=self._frame, height=100, width=100, font=(
+            "Times New Roman", 40), bg="peach puff")
         textBox.insert("end", text)
         textBox.config(state='disabled')
         textBox.pack(expand=True)

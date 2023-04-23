@@ -1,12 +1,15 @@
 from ui.welcome_view import Welcome_view
 from ui.game_view import Game_view
 from ui.how_to_play_guide import Guide_view
+from repositories.game_statitics_repository import GameStatitics
 
 
 class UI:
-    def __init__(self, root):
+    def __init__(self, root, db):
         self._root = root
         self._current_view = None
+        # self.db = db
+        self.gamestatitics = GameStatitics(db)
 
     def start(self):
         self._show_welcome_view()
@@ -23,7 +26,8 @@ class UI:
         self._current_view = Welcome_view(
             self._root,
             self._handle_game,
-            self._handle_how_to_play
+            self._handle_game_instruction,
+            self
 
         )
         self._current_view.pack()
@@ -34,7 +38,7 @@ class UI:
     def _handle_welcome(self):
         self._show_welcome_view()
 
-    def _handle_how_to_play(self):
+    def _handle_game_instruction(self):
         self._show_how_to_play_guide_view()
 
     def _show_game_view(self, mode):
@@ -43,7 +47,8 @@ class UI:
         self._current_view = Game_view(
             self._root,
             self._handle_welcome,
-            mode
+            mode,
+            self
 
         )
 

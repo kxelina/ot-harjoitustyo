@@ -6,13 +6,16 @@ from ui.ui_card import UiCard
 
 
 class Game_view:
-    def __init__(self, root, handle_welcome, mode):
+    def __init__(self, root, handle_welcome, mode, ui):
         self._root = root
         self._root.geometry("1600x950")
         self._canvas = None
         self._handle_welcome = handle_welcome
         self._mode = mode
+        self.stop_time = None
         self.backimage = self.create_back_image()
+        self.game = Game(mode, self._root)
+        self.ui = ui
 
         self._initialize()
 
@@ -32,14 +35,13 @@ class Game_view:
 
     def label(self):
         title = tk.Label(master=self._canvas, text="Easy mode",
-                         font=("Helvetica", 20))
-        title.pack()
+                         font=("Times New Roman", 40), bg="white", fg="light sea green")
+        title.pack(pady=10)
 
     def button(self):
-        back = tk.Button(master=self._canvas, text="back",
-                         bg="pink", fg="white", command=self._handle_welcome)
-        back.place(x=100, y=100)
-        back.pack()
+        self.back = tk.Button(master=self._canvas, text="Quit Game",
+                              bg="light sea green", fg="white", command=self._handle_welcome, font=("Times New Roman", 30))
+        self.back.pack(side="bottom", pady=30)
 
     def create_image(self, card):
         image = Image.open(f"./src/images/cards/{self.card_filename(card)}")
@@ -60,28 +62,46 @@ class Game_view:
         return f'{card.suitname().lower()}-{card.value}.png'
 
     def create_deck(self):
-        game = Game("easy", self._root)
+        Game.debug_print_deck(self.game)
+        Game.shuffle(self.game)
+        Game.place_cards(self.game)
+        for card in self.game.deck:
+            UiCard(self, card, self.game)
 
-        Game.debug_print_deck(game)
-        Game.shuffle(game)
-        Game.place_cards(game)
-        for card in game.deck:
-            UiCard(self, card, game)
-
-        game.start_time = time.time()
-        # self.show_time()
+        self.game.start_time = time.time()
+        self.show_time()
 
     def show_time(self):
-        self.label = tk.Label(master=self._root, text="time:")
-        self.label.pack()
+        self.label = tk.Label(master=self._canvas, text="time:", font=(
+            "Times New Roman", 35), bg="white", fg="light sea green",)
+        self.label.place(x=1600-30, y=950-30)
+
         self.update_time()
 
     def update_time(self):
-        curr_time = time.time()
-        start_time = self.start_time
-        time_label = f"{curr_time-start_time} s"
-        self.label.config(text=f"time:{time_label}")
-        self.label.after(200, self.update_time)
+        if self.stop_time == None:
+            curr_time = time.time()
+        else:
+            curr_time = self.stop_time
+        start_time = self.game.start_time
+        time_render = round(curr_time-start_time, 1)
+        time_label = f"{time_render} s"
+        self.label.config(text=f"Timer: {time_label}")
+        if self.stop_time == None:
+            self.update = self.label.after(200, self.update_time)
 
-        # if win: stop timer
-        # timer is not on root
+    def win(self):
+        print("check win")
+        if len(self.game.deck) == 0:
+            label = tk.Label(master=self._canvas, text="CONGRATULATIONS<3", font=(
+                "Times New Roman", 80), bg="white", fg="light sea green")
+            label.pack(pady=350)
+            print("win")
+            self.back.config(text="Back to menu")
+
+            self.stop_time = time.time()
+            start_time = self.game.start_time
+            self.label.after_cancel(self.update)
+           # print(f"aika:{self.stop_time-start_time} s")
+            self.ui.gamestatitics.add_game_score(
+                self._mode, self.stop_time-start_time)

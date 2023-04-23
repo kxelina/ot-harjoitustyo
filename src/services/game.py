@@ -1,4 +1,3 @@
-import tkinter as tk
 import random
 import time
 from entities.card import Card
@@ -28,7 +27,6 @@ class Game:
 
     def debug_print_deck(self):
         for i in self.deck:
-
             print(i.to_string())
 
     def shuffle(self):
@@ -89,15 +87,3 @@ class Game:
     def turn_card(self, card):
         print(f"card is turned{card.display}")
         card.display = not card.display
-
-    def win(self):
-        print("check win")
-        if len(self.deck) == 0:
-            label = tk.Label(master=self._root, text="WIN")
-            label.pack()
-            print("win")
-
-            stop_time = time.time()
-            start_time = self.start_time
-            print(f"aika:{stop_time-start_time} s")
-            # win is not on root

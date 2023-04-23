@@ -47,4 +47,4 @@ class UiCard:
             same[1].ui_card.show_cardback()
             same[2].ui_card.show_cardback()
             # print("bye11")
-        self.game.win()
+        self.view.win()

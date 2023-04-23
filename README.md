@@ -20,8 +20,9 @@ Asenna Poetry (Linux tai MacOS):
 - poetry install
 ``` 
 Linkki Releasiin:
+[Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko5)
 ```
-- https://github.com/kxelina/python-elinanpeli/releases/tag/viikko5
+- zip-file pitää purkaa
 ```
 ## Komennot
 ### Peli käynnistyy:

@@ -12,12 +12,19 @@ Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero.
 Tarkista, onko uusin python versio:
 
 ```
-- python3 --version tai python --version
+python3 --version tai python --version
 ```
 Asenna Poetry (Linux tai MacOS):
 ```
-- curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/.local python3 -
-- poetry install
+curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/.local python3 -
+```
+```
+poetry install
+``` 
+Asenna PIL (Linux):
+``` 
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade Pillow
 ``` 
 Linkki Releasiin:
 [Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko5)
@@ -27,19 +34,19 @@ Linkki Releasiin:
 ## Komennot
 ### Peli käynnistyy:
 ```
-- poetry run invoke start
+poetry run invoke start
 ```
 ### Testit:
 ```
--poetry run invoke test
+poetry run invoke test
 ```
 ### Coverage-report:
 ```
--poetry run invoke coverage-report
+poetry run invoke coverage-report
 ```
 Raportti tulee _htmlcov_ kansioon index tiedostoon
 
 ### Pylint:
 ```
--poetry run invoke lint
+poetry run invoke lint
 ```

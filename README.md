@@ -9,9 +9,20 @@ Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero.
 
 ## Asennus
 ### Asenna riippuvuudet:
+Tarkista, onko uusin python versio:
+
 ```
+- python3 --version tai python --version
+```
+Asenna Poetry (Linux tai MacOS):
+```
+- curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/.local python3 -
 - poetry install
 ``` 
+Linkki Releasiin:
+```
+- https://github.com/kxelina/python-elinanpeli/releases/tag/viikko5
+```
 ## Komennot
 ### Peli käynnistyy:
 ```

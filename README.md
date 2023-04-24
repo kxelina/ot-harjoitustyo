@@ -16,15 +16,7 @@ python3 --version tai python --version
 ```
 Asenna Poetry (Linux tai MacOS):
 ```
-curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/.local python3 -
-```
-```
 poetry install
-``` 
-Asenna PIL (Linux):
-``` 
-python3 -m pip install --upgrade pip
-python3 -m pip install --upgrade Pillow
 ``` 
 Linkki Releasiin:
 [Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko5)

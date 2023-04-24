@@ -14,7 +14,7 @@ Tarkista, onko uusin python versio:
 ```
 python3 --version tai python --version
 ```
-Asenna Poetry (Linux tai MacOS):
+Asenna Poetry:
 ```
 poetry install
 ``` 

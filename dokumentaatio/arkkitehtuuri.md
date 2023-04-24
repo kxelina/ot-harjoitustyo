@@ -29,3 +29,18 @@ card --> card_suit
 
 ## Päätoiminnallisuudet
 
+Pelaaja valitsee kortin ja painaa sitä sekvenssikaaviona.
+
+```mermaid
+sequenceDiagram
+    actor Player 
+    participant UI
+    participant Game
+    Player ->> UI: click card
+    UI ->> Game: turn card
+    Game ->> Game: check card
+    Game ->> Game: find pairs
+    Game ->> UI: turn card (if not same)
+    UI ->> UI: show card back
+    Game ->> Game: deck.pop(card) (if same)
+```

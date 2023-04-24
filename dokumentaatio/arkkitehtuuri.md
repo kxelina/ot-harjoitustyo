@@ -26,3 +26,6 @@ class game{
 card --> card_suit
 ```
 ![pakkauskuva.png](./kuvat/pakkauskuva.png)
+
+## Päätoiminnallisuudet
+

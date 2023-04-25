@@ -31,6 +31,7 @@ Linkki Releasiin:
 ```
 poetry run invoke start
 ```
+- peli toimii full screen mode:ssa
 ### Testit:
 ```
 poetry run invoke test
@@ -46,4 +47,4 @@ Raportti tulee _htmlcov_ kansioon index tiedostoon
 ```
 poetry run invoke lint
 ```
-- peli toimii full screen mode:ssa
+

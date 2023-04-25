@@ -9,7 +9,7 @@ Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero.
 
 ## Asennus
 ### Asenna riippuvuudet:
-Tarkista, onko uusin python versio:
+Tarkista, onko uusin python versio (joka tukee tkinker:iä):
 
 ```
 python3 --version tai python --version

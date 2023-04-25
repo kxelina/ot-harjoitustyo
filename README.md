@@ -16,6 +16,9 @@ python3 --version tai python --version
 ```
 Asenna Poetry:
 ```
+curl -sSL https://install.python-poetry.org | python3 -
+```
+```
 poetry install
 ``` 
 Linkki Releasiin:

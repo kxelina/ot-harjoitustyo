@@ -31,7 +31,7 @@ Linkki Releasiin:
 ```
 poetry run invoke start
 ```
-- peli toimii full screen mode:ssa
+- peli toimii full screen mode:ssa eli laita peli full screen mode:iin
 ### Testit:
 ```
 poetry run invoke test

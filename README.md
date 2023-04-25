@@ -46,3 +46,4 @@ Raportti tulee _htmlcov_ kansioon index tiedostoon
 ```
 poetry run invoke lint
 ```
+- peli toimii full screen mode:ssa

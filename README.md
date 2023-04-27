@@ -2,6 +2,7 @@
 Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero.
 
 ## Dokumentaatio
+- [käyttöohje](./dokumentaatio/käyttöohje.md)
 - [vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
 - [työaikakirjanpito](./dokumentaatio/tyoaikakirjanpito.md)
 - [changelog](./dokumentaatio/changelog.md)

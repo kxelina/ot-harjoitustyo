@@ -42,4 +42,30 @@ class TestCard_deck(unittest.TestCase):
         self.assertEqual(newgame.deck[-1].button_place_x(), 185*9+50)
         self.assertEqual(newgame.deck[-1].button_place_y(), 200*3+100)
 
-    # def test_
+    def test_find_pairs_are_same(self):
+        newgame = Game("easy", self)
+
+        card1 = Card(Suit.SPADE, 1, newgame)
+        card2 = Card(Suit.CLUB, 1, newgame)
+
+        newgame.deck = [card1, card2]
+        card1.display = True
+        card2.display = True
+
+        Game.find_pairs(newgame)
+
+        self.assertEqual(newgame.deck, [])
+
+    def test_find_pairs_not_same(self):
+        newgame = Game("easy", self)
+
+        card1 = Card(Suit.SPADE, 2, newgame)
+        card2 = Card(Suit.CLUB, 1, newgame)
+
+        newgame.deck = [card1, card2]
+        card1.display = True
+        card2.display = True
+
+        Game.find_pairs(newgame)
+
+        self.assertEqual(len(newgame.deck), 2)

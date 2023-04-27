@@ -3,6 +3,14 @@ import tkinter as tk
 
 class UiCard:
     def __init__(self, view, card, game):
+        """Luokan konstruktori. Luo uuden käyttöliittymästä vastaavan luokan.
+        Args:
+            view: merkkijonoarvo, kertoo kortille näkymän.
+            card: merkkijonoarvo, kertoo kortille kortin tiedot.
+            game: merkkijonoarvo, kertoo kortille pelin.
+        funktio:
+            set_button: luo kortille nappulan ja kertoo sille sen paikan
+        """
         self.view = view
         self.card = card
         self.game = game
@@ -18,16 +26,21 @@ class UiCard:
         # print(f"create card button {x}-{self.display},  {self.button_place_x}-{self.button_place_y}")
 
     def show_card(self, card):
+        """ Näyttää kortin. """
         image = self.view.create_image(card)
         self.card.button.image = image
         self.card.button.config(image=image)
 
     def show_cardback(self):
+        """ Näyttää kortin takapuolen."""
         image = self.view.backimage
         self.card.button.config(image=image)
         print(f"käänän tätä {self.card.to_string()}")
 
     def handle_cardback(self):
+        """ Kääntää kortin, näyttää kortin, lisää kortit listaan, tarkistaa, onko kortit parit ja poistaa kortit, jos on.
+        Lopulta katsoo, onko peli suoritettu loppuun.
+        """
         self.game.turn_card(self.card)
         print("hello, 1-2 käänty")
         self.show_card(self.card)

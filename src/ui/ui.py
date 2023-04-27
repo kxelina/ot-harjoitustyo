@@ -5,7 +5,15 @@ from repositories.game_statitics_repository import GameStatitics
 
 
 class UI:
+    """Sovelluksen käyttöliittymästä vastaava luokka."""
+
     def __init__(self, root, db):
+        """Luokan konstruktori. Luo uuden käyttöliittymästä vastaavan luokan.
+        Args:
+            root: TKinter-elementti, joka alustaa käyttöliittymän näkymän.
+            current_view: nykyinen ikkuna, oletusarvoltaan None
+            gamestatitics: class GameStatitics, yhdistyy repositorioon
+        """
         self._root = root
         self._current_view = None
         # self.db = db

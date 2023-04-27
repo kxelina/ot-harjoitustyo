@@ -1,5 +1,32 @@
 class Card:
+    """ Luokka, joka antaa yhden kortin tiedot.
+
+    Attributes:
+        suit: numeroarvo, class Suit
+        value: numeroarvo, kuvaa kortin numeroa
+        display: Boolean-arvo, kuvaa, että onko kortti oikeinpäin vai väärinpäin
+        game: merkkijonoarvo, kuvaa pelin tason
+        ui_card: luo kortille nappulan eli kuvan
+        column: kertoo kortin column tiedon
+        row: kertoo kortin row tiedon
+
+    """
+
     def __init__(self, suit, value, game):
+        """ Luokan konstruktori, joka antaa kortille nämä tiedot.
+        Args:
+            suit: numeroarvo, class Suit
+            value: numeroarvo, kuvaa kortin numeroa
+            display: oletusarvoltaan False.
+            Boolean-arvo, kuvaa, että onko kortti oikeinpäin vai väärinpäin
+            game: merkkijonoarvo, kuvaa pelin tason
+            ui_card: oletusarvoltaan None.
+            luo kortille nappulan eli kuvan
+            column: oletusarvoltaan None.
+            kertoo kortin column tiedon
+            row: oletusarvoltaan None.
+            kertoo kortin row tiedon
+        """
         self.suit = suit
         self.value = value
         self.display = False

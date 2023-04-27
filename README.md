@@ -10,12 +10,15 @@ Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero.
 
 ## Asennus
 ### Asenna riippuvuudet:
-Tarkista, onko uusin python versio:
+Tarkista, onko uusin python versio (joka tukee tkinker:iä):
 
 ```
 python3 --version tai python --version
 ```
 Asenna Poetry:
+```
+curl -sSL https://install.python-poetry.org | python3 -
+```
 ```
 poetry install
 ``` 
@@ -29,11 +32,13 @@ Linkki Releasiin:
 ```
 poetry run invoke start
 ```
+- peli toimii full screen mode:ssa eli laita peli full screen mode:iin
 ### Testit:
 ```
 poetry run invoke test
 ```
 ### Coverage-report:
+Komento pitää suorittaa src hakemistossa.
 ```
 poetry run invoke coverage-report
 ```
@@ -43,3 +48,4 @@ Raportti tulee _htmlcov_ kansioon index tiedostoon
 ```
 poetry run invoke lint
 ```
+

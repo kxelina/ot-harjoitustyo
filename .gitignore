@@ -4,4 +4,4 @@ htmlcov
 __pycache__
 
 # data file
-data/gamestatitics.db
+data/gamestatistics.db

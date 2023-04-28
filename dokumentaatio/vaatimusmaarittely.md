@@ -4,7 +4,7 @@
 Pelissä on easy mode:ssa 10x4 korttia eli yksi korttipakka, jossa on vain numerosta 1-10. Pelaaja voi valita minkä vaikeustason hän haluaa pelata. Tasoja on easy, medium ja hard, niissä korttimäärä vaihtelee. Pelissä on tarkoitus valita kaksi korttia, jotka ovat molemmat samaa numeroa. Kortit ovat aluksi väärinpäin ja kortteja saa kääntää 2 kerralla, mutta tämä muuttuu eri tason kohdalla. Sitten kun kaikki parit on löydetty, niin pelin voittaa. 
 
 ## Käyttöliittymäluonnos
-![IMG_5206.jpg](./kuvat/IMG_5206.jpg)
+![käyttöliittymäluonnos.jpg](./kuvat/käyttöliittymäluonnos.jpg)
 
 ## Perusversion tarjoama toiminnallisuus
 - On tervetuloa sivu, missä on how to play-ohje **tehty**

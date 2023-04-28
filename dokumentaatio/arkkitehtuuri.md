@@ -77,7 +77,7 @@ Kun pelaaja on voittanut pelin.
 ```mermaid
 sequenceDiagram
     participant UI
-    participant Gamestatiticsrepository as G
+    participant G as Gamestatiticsrepository
     UI --> G: add game score
     G --> UI: get top5 best score
 ```    

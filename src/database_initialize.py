@@ -1,8 +1,8 @@
 from database_connection import database_connection
 
 
-def initialize_database():
-    db_connection = database_connection()
+def initialize_database(databasename):
+    db_connection = database_connection(databasename)
 
     table = db_connection.execute(
         '''SELECT name FROM sqlite_master WHERE type='table' AND name=?;''',
@@ -16,8 +16,8 @@ def initialize_database():
 
 def create_tables(db_connection):
     db_connection.execute(
-        "CREATE TABLE Results(id INTEGER PRIMARY KEY, level text, score FLOAT)")
+        "CREATE TABLE Results(id INTEGER PRIMARY KEY, level INTERGER, score FLOAT)")
 
 
-if __name__ == "__main__":
-    initialize_database()
+# if __name__ == "__main__":
+#     initialize_database()

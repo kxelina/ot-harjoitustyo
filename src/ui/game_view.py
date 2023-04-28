@@ -3,18 +3,19 @@ import time
 from PIL import Image, ImageTk
 from services.game import Game
 from ui.ui_card import UiCard
+from entities.game_level import Level
 
 
 class Game_view:
     """ Pelinäkymä."""
 
-    def __init__(self, root, handle_welcome, mode, ui):
+    def __init__(self, root, handle_welcome, level, ui):
         """ Luokan kontruktori. Luo pelinäkymän.
         Args:
             root: Tkinter-elementti, joka alustaa pelinäkymän.
             canvas: Tkinter-elementti, jonka oletusarvo on None.
             handle_welcome: kutsuttava arvo, jota kutsutaan kun palataan takaisin etusivulle.
-            mode: merkkijonoarvo, joka kertoo pelin tason.
+            level: Enum level, joka kertoo pelin tason.
             stop_time: lopettaa peliajan, oletusarvoltaan None.
             backimage: funktio, joka luo kortin takapuolen kuvan.
             game: class Game
@@ -24,10 +25,10 @@ class Game_view:
         self._root.geometry("1600x950")
         self._canvas = None
         self._handle_welcome = handle_welcome
-        self._mode = mode
+        self._level = level
         self.stop_time = None
         self.backimage = self.create_back_image()
-        self.game = Game(mode, self._root)
+        self.game = Game(level, self._root)
         self.ui = ui
 
         self._initialize()
@@ -50,7 +51,14 @@ class Game_view:
 
     def label(self):
         """ Luo näkymän otsikon. """
-        title = tk.Label(master=self._canvas, text="Easy mode",
+        # print(f"game level:{self.game.level}")
+        if self.game.level == Level.EASY:
+            text = "Easy Level"
+        elif self.game.level == Level.MEDIUM:
+            text = "Medium Level"
+        else:
+            text = "Hard Level"
+        title = tk.Label(master=self._canvas, text=text,
                          font=("Times New Roman", 40), bg="white", fg="light sea green")
         title.pack(pady=10)
 
@@ -96,7 +104,7 @@ class Game_view:
         Game.debug_print_deck(self.game)
         Game.shuffle(self.game)
         Game.place_cards(self.game)
-        for card in self.game.deck:
+        for card in self.game.get_deck():
             UiCard(self, card, self.game)
 
         self.game.start_time = time.time()
@@ -130,7 +138,7 @@ class Game_view:
         Lisää repositorioon pelisuoritusajan.
         """
         print("check win")
-        if len(self.game.deck) == 0:
+        if len(self.game.get_deck()) == 0:
             label = tk.Label(master=self._canvas, text="CONGRATULATIONS<3", font=(
                 "Times New Roman", 80), bg="white", fg="light sea green")
             label.pack(pady=350)
@@ -142,4 +150,4 @@ class Game_view:
             self.label.after_cancel(self.update)
            # print(f"aika:{self.stop_time-start_time} s")
             self.ui.gamestatitics.add_game_score(
-                self._mode, self.stop_time-start_time)
+                self._level, self.stop_time-start_time)

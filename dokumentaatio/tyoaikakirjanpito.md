@@ -18,4 +18,5 @@
 |    21.4   |   3  | aloitin repositorin tekemisen, että voi tallentaa parhaan ajan sinne, muokkasin aika funktiota|
 |    22.4   |   7  | muokkasin ui näkymää mukavamman näköiseksi, lisäsin database connection ja initialisoinnin, näkyy top 5 parasta aikaa etusivulla|
 |    24.4   |   2  | lisäsin poetryyn paketin Pillow ja tein sekvenssikaaviota|
-| yht   | 59  | | 
+|    28.4   |   5  | Lisäsin medium ja hard tasot peliin ja lisäisin testejä|
+| yht   | 64  | | 

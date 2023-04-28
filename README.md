@@ -38,7 +38,6 @@ poetry run invoke start
 poetry run invoke test
 ```
 ### Coverage-report:
-Komento pitää suorittaa src hakemistossa.
 ```
 poetry run invoke coverage-report
 ```

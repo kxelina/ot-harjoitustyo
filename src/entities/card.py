@@ -1,3 +1,7 @@
+from entities.game_level import Level
+from entities.card_suit import Suit
+
+
 class Card:
     """ Luokka, joka antaa yhden kortin tiedot.
 
@@ -45,11 +49,28 @@ class Card:
         return f'{self.suitname()}-{self.value}'
 
     def is_same(self, card):
-        if self.suit == card.suit and self.value == card.value:
+        #print(f"to string:{card.to_string()}, {self.to_string()}")
+        if self.game.level == Level.EASY:
+            if self.value == card.value:
+                return True
+        elif self.game.level == Level.MEDIUM:
+            if self.value == card.value:
+                return True
+        elif self.game.level == Level.HARD:
+            if self.is_same_color(card) and self.value == card.value:
+                return True
+        return False
+
+    def is_same_color(self, card):
+        if self.suit in (Suit.SPADE, Suit.CLUB) and card.suit in (Suit.SPADE, Suit.CLUB):
+            return True
+        if self.suit in (Suit.HEART, Suit.DIAMOND) and card.suit in (Suit.HEART, Suit.DIAMOND):
             return True
         return False
 
     def button_place_x(self):
+        if self.game.level == Level.EASY:
+            return 285*self.column+300
         return 185*self.column+50
 
     def button_place_y(self):

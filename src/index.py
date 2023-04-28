@@ -4,7 +4,7 @@ from database_initialize import initialize_database
 
 
 def main():
-    database = initialize_database()
+    database = initialize_database("game")
     window = Tk()
     window.title("Memory game")
 

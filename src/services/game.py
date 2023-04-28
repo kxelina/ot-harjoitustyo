@@ -2,6 +2,7 @@ import random
 import time
 from entities.card import Card
 from entities.card_suit import Suit
+from entities.game_level import Level
 
 
 class Game:
@@ -23,8 +24,10 @@ class Game:
         self.deck = []
         self.start_time = None
         self._root = root
-        if level == "easy":
-            self.cards_per_suit = 10  # 10
+        if level == Level.EASY:
+            self.cards_per_suit = 5
+        else:
+            self.cards_per_suit = 10
 
         self.create_game()
 
@@ -36,7 +39,7 @@ class Game:
             self.deck.append(Card(Suit.HEART, i, self))
             self.deck.append(Card(Suit.CLUB, i, self))
 
-    def show_deck(self):
+    def get_deck(self):
         """ Palauttaa korttipakan. """
         return self.deck
 
@@ -73,7 +76,6 @@ class Game:
         visable_list = []
         card_counter = 0
         index_list = []
-        same = False
         for card in self.deck:
             if card.display is True:
                 visable_list.append(card)
@@ -83,14 +85,12 @@ class Game:
                     break
             card_counter += 1
 
-        if visable_list[0].value == visable_list[1].value:
-            same = True
+        same = visable_list[0].is_same(visable_list[1])
+        if same:
             self.turn_card(visable_list[0])
             self.turn_card(visable_list[1])
             card = self.deck.pop(index_list[1])
             card = self.deck.pop(index_list[0])
-
-       # if self.level == "medium":
 
         return (same, visable_list[0], visable_list[1])
 

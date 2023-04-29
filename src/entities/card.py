@@ -13,7 +13,6 @@ class Card:
         ui_card: esittää korttia ui:ssa
         column: kertoo kortin column tiedon
         row: kertoo kortin row tiedon
-
     """
 
     def __init__(self, suit, value, game):
@@ -21,15 +20,7 @@ class Card:
         Args:
             suit: numeroarvo, class Suit
             value: numeroarvo, kuvaa kortin numeroa
-            display: oletusarvoltaan False.
-            Boolean-arvo, kuvaa, että onko kortti oikeinpäin vai väärinpäin
             game: objekti, kuvaa nykyistä peliä
-            ui_card: oletusarvoltaan None.
-            esittää korttia ui:ssa
-            column: oletusarvoltaan None.
-            kertoo kortin column tiedon
-            row: oletusarvoltaan None.
-            kertoo kortin row tiedon
         """
         self.suit = suit
         self.value = value

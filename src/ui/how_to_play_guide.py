@@ -8,7 +8,6 @@ class Guide_view:
         """ Luokan kontruktori. Luo pelinäkymän.
         Args:
             root: Tkinter-elementti, joka alustaa peliohjeen näkymän.
-            frame: Tkinter-elementti, jonka oletusarvo on None.
             handle_welcome: kutsuttava arvo, jota kutsutaan kun palataan takaisin etusivulle.
         """
         self._root = root

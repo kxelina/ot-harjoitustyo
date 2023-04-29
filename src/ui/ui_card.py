@@ -9,8 +9,6 @@ class UiCard:
             view: merkkijonoarvo, kertoo kortille näkymän.
             card: merkkijonoarvo, kertoo kortille kortin tiedot.
             game: merkkijonoarvo, kertoo kortille pelin.
-        funktio:
-            set_button: luo kortille nappulan ja kertoo sille sen paikan
         """
         self.view = view
         self.card = card

@@ -11,8 +11,7 @@ class UI:
         """Luokan konstruktori. Luo uuden käyttöliittymästä vastaavan luokan.
         Args:
             root: TKinter-elementti, joka alustaa käyttöliittymän näkymän.
-            current_view: nykyinen ikkuna, oletusarvoltaan None
-            gamestatitics: class GameStatitics, yhdistyy repositorioon
+            db: ottaa yhteyden database:iin
         """
         self._root = root
         self._current_view = None

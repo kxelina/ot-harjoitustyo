@@ -13,12 +13,8 @@ class Game_view:
         """ Luokan kontruktori. Luo pelinäkymän.
         Args:
             root: Tkinter-elementti, joka alustaa pelinäkymän.
-            canvas: Tkinter-elementti, jonka oletusarvo on None.
             handle_welcome: kutsuttava arvo, jota kutsutaan kun palataan takaisin etusivulle.
             level: Enum level, joka kertoo pelin tason.
-            stop_time: lopettaa peliajan, oletusarvoltaan None.
-            backimage: funktio, joka luo kortin takapuolen kuvan.
-            game: class Game
             ui: merkkijonoarvo, joka kertoo ui luokan.
         """
         self._root = root

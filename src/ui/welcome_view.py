@@ -10,8 +10,6 @@ class Welcome_view:
         """ Luokan kontruktori. Luo pelinäkymän.
         Args:
             root: Tkinter-elementti, joka alustaa pelinäkymän.
-            frame: Tkinter-elementti, jonka oletusarvo on None.
-            handle_easy: kutsuttava arvo, jota kutsutaan kun halutaan pelinäkymälle easy tasolle.
             handle_game_instruction: kutsuttava arvo, jota kutsutaan kun halutaan peliohjeen näkymälle.
             ui: merkkijonoarvo, joka kertoo ui luokan.
         """

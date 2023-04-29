@@ -17,6 +17,7 @@
 |    18.4   |   2  | muokkasin vähän koodia ja muutin readme tiedostoa|
 |    21.4   |   3  | aloitin repositorin tekemisen, että voi tallentaa parhaan ajan sinne, muokkasin aika funktiota|
 |    22.4   |   7  | muokkasin ui näkymää mukavamman näköiseksi, lisäsin database connection ja initialisoinnin, näkyy top 5 parasta aikaa etusivulla|
-|    24.4   |   2  | lisäsin poetryyn paketin Pillow ja tein sekvenssikaaviota|
-|    28.4   |   5  | Lisäsin medium ja hard tasot peliin ja lisäisin testejä|
-| yht   | 64  | | 
+|    24.4   |   2  | lisäsin poetryyn paketin Pillow ja tein sekvenssikaaviota, lisätty doc-string kommentteja, lisätty käyttöohje|
+|    28.4   |   5  | Lisäsin medium ja hard tasot peliin ja lisäisin testejä, lisätty uusi luokka Level|
+|    29.4   |   2  | otettu turhat komentit ja printti komennot pois, lisätty testejä, muokattu koodia siistimmäksi|
+| yht   | 66  | | 

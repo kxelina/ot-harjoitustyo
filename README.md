@@ -1,5 +1,5 @@
 # Ohjelmistotekniikka, Muistipeli
-Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero.
+Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero. Pelaaja voi valita itselle mieluisan tason pelata. Pelajaa valitsee aina kaksi korttia, jos ne ovat parit, niin kortit häviää näytöltä. Jos kortit eivät olleet parit, niin ne kääntyvät nurin päin. 
 
 ## Dokumentaatio
 - [käyttöohje](./dokumentaatio/käyttöohje.md)
@@ -23,7 +23,7 @@ curl -sSL https://install.python-poetry.org | python3 -
 poetry install
 ``` 
 Linkki Releasiin:
-[Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko5palautus)
+[Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko6)
 ```
 - zip-file pitää purkaa
 ```
@@ -32,7 +32,6 @@ Linkki Releasiin:
 ```
 poetry run invoke start
 ```
-- peli toimii full screen mode:ssa eli laita peli full screen mode:iin
 ### Testit:
 ```
 poetry run invoke test

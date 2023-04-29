@@ -6,6 +6,7 @@ Pelissä on tällä hetkellä kolme näkymää, jotka ovat:
 - etusivu
 - pelinohjeet
 - peli
+
 Kaikki ovat omina luokkina, nimeltä [Welcome_view](../ui/welcome_view.py), [Game_view](../ui/game_view.py) ja [Guide_view](../ui/how_to_play_guide.py). Main kutsuu luokka [UI](../ui/ui.py), joka näyttää nämä näkymät tai poistaa näkymiä.
 
 Game_view luo kortin kuvan. Käyttöliittymässä on vielä luokka [UiCard](../ui/ui_card.py), joka laittaa kortit näkyville Game_view:hin pelajalle. Se kutsuu luokka Game, jotta pystyy kääntämään kortin. 

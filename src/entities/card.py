@@ -9,8 +9,8 @@ class Card:
         suit: numeroarvo, class Suit
         value: numeroarvo, kuvaa kortin numeroa
         display: Boolean-arvo, kuvaa, että onko kortti oikeinpäin vai väärinpäin
-        game: merkkijonoarvo, kuvaa pelin tason
-        ui_card: luo kortille nappulan eli kuvan
+        game: objekti, kuvaa nykyistä peliä
+        ui_card: esittää korttia ui:ssa
         column: kertoo kortin column tiedon
         row: kertoo kortin row tiedon
 
@@ -23,9 +23,9 @@ class Card:
             value: numeroarvo, kuvaa kortin numeroa
             display: oletusarvoltaan False.
             Boolean-arvo, kuvaa, että onko kortti oikeinpäin vai väärinpäin
-            game: merkkijonoarvo, kuvaa pelin tason
+            game: objekti, kuvaa nykyistä peliä
             ui_card: oletusarvoltaan None.
-            luo kortille nappulan eli kuvan
+            esittää korttia ui:ssa
             column: oletusarvoltaan None.
             kertoo kortin column tiedon
             row: oletusarvoltaan None.
@@ -49,7 +49,6 @@ class Card:
         return f'{self.suitname()}-{self.value}'
 
     def is_same(self, card):
-        #print(f"to string:{card.to_string()}, {self.to_string()}")
         if self.game.level == Level.EASY:
             if self.value == card.value:
                 return True

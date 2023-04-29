@@ -51,7 +51,6 @@ class Game_view:
 
     def label(self):
         """ Luo näkymän otsikon. """
-        # print(f"game level:{self.game.level}")
         if self.game.level == Level.EASY:
             text = "Easy Level"
         elif self.game.level == Level.MEDIUM:
@@ -74,8 +73,7 @@ class Game_view:
             Palauttaa kuvan.
         """
         image = Image.open(f"./src/images/cards/{self.card_filename(card)}")
-        print(f'filename {self.card_filename(card)}')
-        image = image.resize((100, 169))  # 667, 1024
+        image = image.resize((100, 169))
         image = ImageTk.PhotoImage(image)
 
         return image
@@ -86,7 +84,7 @@ class Game_view:
             Palauttaa takapuolikuvan.
         """
         image = Image.open(f"./src/images/cards/back.png")
-        image = image.resize((100, 169))  # 667, 1024
+        image = image.resize((100, 169))
         image = ImageTk.PhotoImage(image)
 
         return image
@@ -101,9 +99,8 @@ class Game_view:
     def create_deck(self):
         """ Luo pelille kortit, sekoittaa niitä, laittaa paikoilleen, aloittaa ajastimen ja kutsuu toista funktiota show_time eli näyttää ajastimen.
         """
-        Game.debug_print_deck(self.game)
-        Game.shuffle(self.game)
-        Game.place_cards(self.game)
+        self.game.shuffle()
+        self.game.place_cards()
         for card in self.game.get_deck():
             UiCard(self, card, self.game)
 
@@ -137,17 +134,14 @@ class Game_view:
         """ Tarkistaa, että onko peli voitettu eli korttipakka lista on tyhjä. Lopettaa ajastimen, jos peli on loppunut. 
         Lisää repositorioon pelisuoritusajan.
         """
-        print("check win")
         if len(self.game.get_deck()) == 0:
             label = tk.Label(master=self._canvas, text="CONGRATULATIONS<3", font=(
                 "Times New Roman", 80), bg="white", fg="light sea green")
             label.pack(pady=350)
-            print("win")
             self.back.config(text="Back to menu")
 
             self.stop_time = time.time()
             start_time = self.game.start_time
             self.label.after_cancel(self.update)
-           # print(f"aika:{self.stop_time-start_time} s")
             self.ui.gamestatitics.add_game_score(
                 self._level, self.stop_time-start_time)

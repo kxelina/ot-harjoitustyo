@@ -60,16 +60,38 @@ class TestCard(unittest.TestCase):
 
         self.assertEqual(len(newgame.deck), 2)
 
-    def test_check_visable_cards(self):
+    def test_card_is_same_color(self):
         newgame = Game(Level.EASY, self)
-        cards = newgame.get_visable_cards()
+
+        card1 = Card(Suit.SPADE, 1, newgame)
+        card2 = Card(Suit.CLUB, 1, newgame)
+
+        self.assertEqual(card1.is_same_color(card2), True)
+
+        card1 = Card(Suit.HEART, 1, newgame)
+        card2 = Card(Suit.DIAMOND, 1, newgame)
+
+        self.assertEqual(card1.is_same_color(card2), True)
+
+    def test_card_is_not_same_color(self):
+        newgame = Game(Level.EASY, self)
+
+        card1 = Card(Suit.SPADE, 1, newgame)
+        card2 = Card(Suit.HEART, 1, newgame)
+
+        self.assertEqual(card1.is_same_color(card2), False) 
+
+
+    def test_check_visible_cards(self):
+        newgame = Game(Level.EASY, self)
+        cards = newgame.get_visible_cards()
         self.assertEqual(cards, 0)
         newgame.turn_card(newgame.deck[1])
         newgame.turn_card(newgame.deck[5])
-        cards = newgame.get_visable_cards()
+        cards = newgame.get_visible_cards()
         self.assertEqual(cards, 2)
         newgame.turn_card(newgame.deck[3])
-        cards = newgame.get_visable_cards()
+        cards = newgame.get_visible_cards()
         self.assertEqual(cards, 3)
 
     def test_level(self):

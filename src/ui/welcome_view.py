@@ -3,7 +3,6 @@ from PIL import Image, ImageTk
 from entities.game_level import Level
 
 
-
 class Welcome_view:
     "Kun peli avataan, niin siitä aukeava näkymä"
 
@@ -18,9 +17,7 @@ class Welcome_view:
         """
         self._root = root
         self._root.geometry("1600x950")
-        # self._root.attributes('-fullscreen')
         self._frame = None
-        # self._handle_easy = handle_easy
         self._handle_game_instruction = handle_game_instruction
         self.ui = ui
 
@@ -45,7 +42,7 @@ class Welcome_view:
 
     def pack(self):
         """ Näyttää näkymän. """
-        self._frame.pack()  # fill=tk.constants.X)
+        self._frame.pack()
 
     def destroy(self):
         """ Poistaa näkymän."""
@@ -66,7 +63,6 @@ class Welcome_view:
     def frame(self):
         """ Luo laatikon."""
         self._frame = tk.Frame(self._root, bg='light goldenrod yellow', bd=20)
-        # height=600, width= 150)#expand=True) #fill=tk.BOTH)
         self._frame.pack(padx=30, pady=40, anchor="ne")
 
     def title(self):
@@ -108,7 +104,6 @@ class Welcome_view:
     def show_top_five_score(self):
         """ Näyttää 5 parasta pelin suoritusaikaa."""
         list = self.ui.gamestatitics.get_best_score()
-        print(len(list))
         top5 = [
             f"score: {round(i[0],2)}, {Level(i[1]).level_to_string()}" for i in list]
         str = "\n".join(top5)

@@ -17,14 +17,10 @@ class Testrepository(unittest.TestCase):
         self.gamestatitics.add_game_score(Level.HARD, 120)
         bestscore = self.gamestatitics.get_best_score()
 
-
-        self.assertEqual(bestscore[0], (5,1))
-        self.assertEqual(bestscore[1], (10,1))
-        self.assertEqual(bestscore[2], (20,2))
-        self.assertEqual(bestscore[3], (30,3))
-        self.assertEqual(bestscore[4], (100,3)) 
-        self.assertEqual(len(bestscore), 5) 
+        self.assertEqual(bestscore[0], (5, 1))
+        self.assertEqual(bestscore[1], (10, 1))
+        self.assertEqual(bestscore[2], (20, 2))
+        self.assertEqual(bestscore[3], (30, 3))
+        self.assertEqual(bestscore[4], (100, 3))
+        self.assertEqual(len(bestscore), 5)
         os.remove("data/teststatistics.db")
-       
-        
-

@@ -1,8 +1,6 @@
 import random
-import time
 from entities.card import Card
 from entities.card_suit import Suit
-from entities.game_level import Level
 
 
 class Game:
@@ -11,12 +9,9 @@ class Game:
     def __init__(self, level, root):
         """ Luokan konstruktori, joka antaa kortille nämä tiedot.
         Args:
-            level: merkkijonoarvo, 
-            joka kertoo pelin tason (kertoo, kuinka paljon kortteja menee mille tasolle)
-            deck: tyhjä lista, luo korttipakalle tyhjän listan
-            start_time: oletusarvoltaan None.
-            aloittaa pelisuorituksen ajan
-            root: merkkijonoarvo, kertoo pelille käyttöliittymän (ikkuna)
+            level: pelin vaikeustaso
+            (kertoo, kuinka paljon kortteja menee mille tasolle)
+            root: Ohjelman käyttöliitymän juuri-ikkuna-elementti
         Funktio:
             create_game: luo pelin
         """
@@ -24,10 +19,7 @@ class Game:
         self.deck = []
         self.start_time = None
         self._root = root
-        if level == Level.EASY:
-            self.cards_per_suit = 5
-        else:
-            self.cards_per_suit = 10
+        self.cards_per_suit = level.cards_per_suit()
 
         self.create_game()
 
@@ -42,10 +34,6 @@ class Game:
     def get_deck(self):
         """ Palauttaa korttipakan. """
         return self.deck
-
-    def debug_print_deck(self):
-        for i in self.deck:
-            print(i.to_string())
 
     def shuffle(self):
         """ Sekoittaa korttien järjestystä. """
@@ -72,52 +60,37 @@ class Game:
             joka kertoo, onko kortit samat, jos on samat (True).
             Palauttaa myös niiden korttien tiedot.
         """
-        print("finpairs")
-        visable_list = []
+        visible_list = []
         card_counter = 0
         index_list = []
         for card in self.deck:
             if card.display is True:
-                visable_list.append(card)
+                visible_list.append(card)
                 index_list.append(card_counter)
-                print(f"hello:{card.to_string()}, {card_counter}")
-                if len(visable_list) == 2:
+                if len(visible_list) == 2:
                     break
             card_counter += 1
 
-        same = visable_list[0].is_same(visable_list[1])
+        same = visible_list[0].is_same(visible_list[1])
         if same:
-            self.turn_card(visable_list[0])
-            self.turn_card(visable_list[1])
+            self.turn_card(visible_list[0])
+            self.turn_card(visible_list[1])
             card = self.deck.pop(index_list[1])
             card = self.deck.pop(index_list[0])
 
-        return (same, visable_list[0], visable_list[1])
+        return (same, visible_list[0], visible_list[1])
 
-    def check_card(self):
-        """ Päivittää käyttöliittymän näkymän ja kutsuu find_pairs funktiota. 
-        Returns:
-            Palauttaa find_pairs funktion arvon.
-        """
-        self._root.update()
-        time.sleep(0.7)
-        print("onko sama")
-        same = self.find_pairs()
-
-        return same
-
-    def get_visable_cards(self):
+    def get_visible_cards(self):
         """ Lisää valitut kortit listaan. 
         Returns:
             Palauttaa listan pituuden.
         """
-        visable_list = []
+        visible_list = []
         for card in self.deck:
             if card.display is True:
-                visable_list.append(card)
-        return len(visable_list)
+                visible_list.append(card)
+        return len(visible_list)
 
     def turn_card(self, card):
         """ Kääntää kortin. """
-        print(f"card is turned{card.display}")
         card.display = not card.display

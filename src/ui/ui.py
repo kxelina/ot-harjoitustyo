@@ -4,7 +4,6 @@ from ui.how_to_play_guide import Guide_view
 from repositories.game_statitics_repository import GameStatitics
 
 
-
 class UI:
     """Sovelluksen käyttöliittymästä vastaava luokka."""
 
@@ -39,7 +38,6 @@ class UI:
         )
         self._current_view.pack()
 
-
     def _handle_welcome(self):
         self._show_welcome_view()
 
@@ -57,8 +55,6 @@ class UI:
 
         )
 
-        # self._current_view.pack()
-
     def _show_how_to_play_guide_view(self):
         self._hide_current_view()
 
@@ -66,5 +62,3 @@ class UI:
             self._root,
             self._handle_welcome
         )
-
-      #  self._current_view.pack()

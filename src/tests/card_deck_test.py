@@ -56,9 +56,9 @@ class TestCard_deck(unittest.TestCase):
         self.assertEqual(deck[0].row, 0)
         self.assertEqual(deck[-1].column, 4)
         self.assertEqual(deck[-1].row, 3)
-        self.assertEqual(deck[0].button_place_x(), 50)
+        self.assertEqual(deck[0].button_place_x(), 300)
         self.assertEqual(deck[0].button_place_y(), 100)
-        self.assertEqual(deck[-1].button_place_x(), 185*4+50)
+        self.assertEqual(deck[-1].button_place_x(), 285*4+300)
         self.assertEqual(deck[-1].button_place_y(), 200*3+100)
 
         newgame = Game(Level.HARD, self)
@@ -75,69 +75,4 @@ class TestCard_deck(unittest.TestCase):
         self.assertEqual(deck[-1].button_place_x(), 185*9+50)
         self.assertEqual(deck[-1].button_place_y(), 200*3+100)
 
-    def test_find_pairs_are_same(self):
-        newgame = Game(Level.EASY, self)
-
-        card1 = Card(Suit.SPADE, 1, newgame)
-        card2 = Card(Suit.DIAMOND, 1, newgame)
-
-        newgame.deck = [card1, card2]
-        card1.display = True
-        card2.display = True
-
-        newgame.find_pairs()
-
-        self.assertEqual(newgame.deck, [])
-
-        newgame = Game(Level.HARD, self)
-
-        card1 = Card(Suit.SPADE, 1, newgame)
-        card2 = Card(Suit.CLUB, 1, newgame)
-
-        newgame.deck = [card1, card2]
-        card1.display = True
-        card2.display = True
-
-        newgame.find_pairs()
-
-        self.assertEqual(newgame.deck, [])
-
-    def test_find_pairs_not_same(self):
-        newgame = Game(Level.EASY, self)
-
-        card1 = Card(Suit.SPADE, 2, newgame)
-        card2 = Card(Suit.CLUB, 1, newgame)
-
-        newgame.deck = [card1, card2]
-        card1.display = True
-        card2.display = True
-
-        newgame.find_pairs()
-
-        self.assertEqual(len(newgame.deck), 2)
-
-        newgame = Game(Level.HARD, self)
-
-        card1 = Card(Suit.DIAMOND, 1, newgame)
-        card2 = Card(Suit.CLUB, 1, newgame)
-
-        newgame.deck = [card1, card2]
-        card1.display = True
-        card2.display = True
-
-        newgame.find_pairs()
-
-        self.assertEqual(len(newgame.deck), 2)
-
-    def test_check_visable_cards(self):
-        newgame = Game(Level.EASY, self)
-        cards = newgame.get_visable_cards()
-        self.assertEqual(cards, 0)
-        newgame.turn_card(newgame.deck[1])
-        newgame.turn_card(newgame.deck[5])
-        cards = newgame.get_visable_cards()
-        self.assertEqual(cards, 2)
-        newgame.turn_card(newgame.deck[3])
-        cards = newgame.get_visable_cards()
-        self.assertEqual(cards, 3)
 

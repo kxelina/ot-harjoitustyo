@@ -5,7 +5,7 @@
 Pelissä on tällä hetkellä kolme näkymää, jotka ovat:
 - etusivu
 - pelinohjeet
-- pelin easy taso
+- peli
 Kaikki ovat omina luokkina, nimeltä [Welcome_view](../ui/welcome_view.py), [Game_view](../ui/game_view.py) ja [Guide_view](../ui/how_to_play_guide.py). Main kutsuu luokka [UI](../ui/ui.py), joka näyttää nämä näkymät tai poistaa näkymiä.
 
 Game_view luo kortin kuvan. Käyttöliittymässä on vielä luokka [UiCard](../ui/ui_card.py), joka laittaa kortit näkyville Game_view:hin pelajalle. Se kutsuu luokka Game, jotta pystyy kääntämään kortin. 
@@ -31,6 +31,7 @@ class Card{
     - row
 }
 class Suit
+class Level
 class Game{
     - level
     - deck
@@ -39,10 +40,11 @@ class Game{
 }
 Card --> Suit
 Game --> Card
+Game --> Level
 ```
 Luokassa Game on metodeja, jotka vastaa pelin toiminnalisuudesta.
 Näitä ovat esimerkiksi:
-- create_game (luo pelin (easy mode))
+- create_game (luo pelin)
 - place_cards (kertoo kortille, missä sen paikka on)
 - find_pairs (tarkistaa, että onko valitut kortit pari)
 - check_card (päivittää näkymää ja kustsuu find_pairs funktiota)
@@ -63,7 +65,7 @@ sequenceDiagram
     Player ->> UI: click card
     UI ->> Game: turn card
     Game ->> UI: show card
-    UI ->> Game: get visable cards
+    UI ->> Game: get visible cards
     Game ->> Game: check card
     Game ->> Game: find pairs
     Game ->> UI: turn card (if not same)
@@ -77,7 +79,7 @@ Kun pelaaja on voittanut pelin.
 ```mermaid
 sequenceDiagram
     participant UI
-    participant G as Gamestatiticsrepository
+    participant G as Gamestatitics
     UI --> G: add game score
     G --> UI: get top5 best score
 ```    

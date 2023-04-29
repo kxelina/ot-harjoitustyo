@@ -3,7 +3,6 @@ class GameStatitics:
         self.connection = db_connection
 
     def add_game_score(self, level, score):
-        print(f"level:{level}")
         self.connection.execute("INSERT INTO Results (level, score) VALUES (?, ?)", [
             level.value, score])
 

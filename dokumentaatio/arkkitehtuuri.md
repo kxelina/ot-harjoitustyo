@@ -84,8 +84,8 @@ sequenceDiagram
     participant UI
     participant G as Gamestatitics
     participant Game
-    Game --> G: add game score
-    G --> UI: get top5 best score
+    Game ->> G: add game score
+    G ->> UI: get top5 best score
 ```    
 
 ## Pelin suoritusajan tallentaminen

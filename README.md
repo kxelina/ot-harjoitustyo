@@ -23,7 +23,7 @@ curl -sSL https://install.python-poetry.org | python3 -
 poetry install
 ``` 
 Linkki Releasiin:
-[Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko6)
+[Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko6palautus)
 ```
 - zip-file pitää purkaa
 ```

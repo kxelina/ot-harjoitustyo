@@ -20,4 +20,5 @@
 |    24.4   |   2  | lisäsin poetryyn paketin Pillow ja tein sekvenssikaaviota, lisätty doc-string kommentteja, lisätty käyttöohje|
 |    28.4   |   5  | Lisäsin medium ja hard tasot peliin ja lisäisin testejä, lisätty uusi luokka Level|
 |    29.4   |   2  | otettu turhat komentit ja printti komennot pois, lisätty testejä, muokattu koodia siistimmäksi|
-| yht   | 66  | | 
+|    30.4   |   4  | siiretty pelilogikkaa pois käyttöliittymästä, lisätty quit nappula, laitettu peli koko näytön tilaan suoraan, korjattu virhe, jos painaa samaa korttia, niin se ei jää auki|
+| yht   | 70  | | 

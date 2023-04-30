@@ -14,7 +14,7 @@ class Welcome_view:
             ui: merkkijonoarvo, joka kertoo ui luokan.
         """
         self._root = root
-        self._root.geometry("1600x950")
+        self._root.attributes("-fullscreen", True)
         self._frame = None
         self._handle_game_instruction = handle_game_instruction
         self.ui = ui
@@ -28,6 +28,8 @@ class Welcome_view:
         self.game_button()
         self.game_instruction_button()
         self.show_top_five_score()
+        self.quit_frame()
+        self.quit_button()
 
     def _handle_game_easy(self):
         self.ui._show_game_view(Level.EASY)
@@ -38,13 +40,18 @@ class Welcome_view:
     def _handle_game_hard(self):
         self.ui._show_game_view(Level.HARD)
 
+    def handle_quit(self):
+        self.ui.quit()
+
     def pack(self):
         """ Näyttää näkymän. """
         self._frame.pack()
+        self.quit_frame.pack()
 
     def destroy(self):
         """ Poistaa näkymän."""
         self._frame.destroy()
+        self.quit_frame.destroy()
 
     def background(self):
         """ Luo taustakuvan pelin etusivulle.
@@ -52,7 +59,10 @@ class Welcome_view:
             Palauttaa taustakuvan.
         """
         bg = Image.open(f"./src/images/background.png")
-        bg = bg.resize((1900, 1020))
+        self._root.update()
+        geometry_width = self._root.winfo_width()
+        geometry_height = self._root.winfo_height()
+        bg = bg.resize((geometry_width, geometry_height))
         bg = ImageTk.PhotoImage(bg)
         label = tk.Label(self._root, image=bg)
         label.place(x=0, y=0)
@@ -62,6 +72,11 @@ class Welcome_view:
         """ Luo laatikon."""
         self._frame = tk.Frame(self._root, bg='light goldenrod yellow', bd=20)
         self._frame.pack(padx=30, pady=40, anchor="ne")
+
+    def quit_frame(self):
+        """ Luo laatikon quit nappulalle."""
+        self.quit_frame = tk.Frame(self._root, bg='steelblue', bd=1)
+        self.quit_frame.pack(padx=10, pady=120, anchor="sw")
 
     def title(self):
         """ Luo otsikon."""
@@ -98,6 +113,15 @@ class Welcome_view:
             button_border, text="Game Instructions", font=("Times New Roman", 25), command=self._handle_game_instruction, bg="pink", fg="steelblue")
         instructions_label.pack()
         button_border.pack(pady=10)
+
+    def quit_button(self):
+        """Luo nappulan, joka lopettaa pelin."""
+        button_border = tk.Frame(self.quit_frame, highlightbackground="steelblue",
+                                 highlightthickness=3, bd=0)
+        quit_label = tk.Button(
+            button_border, text="Quit Game", font=("Times New Roman", 40), command=self.handle_quit, bg="pink", fg="steelblue", pady=10)
+        quit_label.pack()
+        button_border.pack(padx=100, pady=50, anchor="se")
 
     def show_top_five_score(self):
         """ Näyttää 5 parasta pelin suoritusaikaa."""

@@ -7,7 +7,7 @@ from entities.game_level import Level
 
 class TestCard(unittest.TestCase):
     def test_find_pairs_are_same(self):
-        newgame = Game(Level.EASY, self)
+        newgame = Game(Level.EASY)
 
         card1 = Card(Suit.SPADE, 1, newgame)
         card2 = Card(Suit.DIAMOND, 1, newgame)
@@ -20,7 +20,7 @@ class TestCard(unittest.TestCase):
 
         self.assertEqual(newgame.deck, [])
 
-        newgame = Game(Level.HARD, self)
+        newgame = Game(Level.HARD)
 
         card1 = Card(Suit.SPADE, 1, newgame)
         card2 = Card(Suit.CLUB, 1, newgame)
@@ -34,7 +34,7 @@ class TestCard(unittest.TestCase):
         self.assertEqual(newgame.deck, [])
 
     def test_find_pairs_not_same(self):
-        newgame = Game(Level.EASY, self)
+        newgame = Game(Level.EASY)
 
         card1 = Card(Suit.SPADE, 2, newgame)
         card2 = Card(Suit.CLUB, 1, newgame)
@@ -47,7 +47,7 @@ class TestCard(unittest.TestCase):
 
         self.assertEqual(len(newgame.deck), 2)
 
-        newgame = Game(Level.HARD, self)
+        newgame = Game(Level.HARD)
 
         card1 = Card(Suit.DIAMOND, 1, newgame)
         card2 = Card(Suit.CLUB, 1, newgame)
@@ -61,7 +61,7 @@ class TestCard(unittest.TestCase):
         self.assertEqual(len(newgame.deck), 2)
 
     def test_card_is_same_color(self):
-        newgame = Game(Level.EASY, self)
+        newgame = Game(Level.EASY)
 
         card1 = Card(Suit.SPADE, 1, newgame)
         card2 = Card(Suit.CLUB, 1, newgame)
@@ -74,23 +74,22 @@ class TestCard(unittest.TestCase):
         self.assertEqual(card1.is_same_color(card2), True)
 
     def test_card_is_not_same_color(self):
-        newgame = Game(Level.EASY, self)
+        newgame = Game(Level.EASY)
 
         card1 = Card(Suit.SPADE, 1, newgame)
         card2 = Card(Suit.HEART, 1, newgame)
 
-        self.assertEqual(card1.is_same_color(card2), False) 
-
+        self.assertEqual(card1.is_same_color(card2), False)
 
     def test_check_visible_cards(self):
-        newgame = Game(Level.EASY, self)
+        newgame = Game(Level.EASY)
         cards = newgame.get_visible_cards()
         self.assertEqual(cards, 0)
-        newgame.turn_card(newgame.deck[1])
-        newgame.turn_card(newgame.deck[5])
+        newgame.deck[1].turn_card()
+        newgame.deck[5].turn_card()
         cards = newgame.get_visible_cards()
         self.assertEqual(cards, 2)
-        newgame.turn_card(newgame.deck[3])
+        newgame.deck[3].turn_card()
         cards = newgame.get_visible_cards()
         self.assertEqual(cards, 3)
 

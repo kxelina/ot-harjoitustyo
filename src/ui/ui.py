@@ -20,6 +20,9 @@ class UI:
     def start(self):
         self._show_welcome_view()
 
+    def quit(self):
+        self._root.quit()
+
     def _hide_current_view(self):
         if self._current_view:
             self._current_view.destroy()

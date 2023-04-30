@@ -17,3 +17,4 @@
 ## viikko 6
 - lisätty medium ja hard tasot
 - lisäytty testejä ja laitettu testit erikseen
+- lisätty quit nappula ja peli toimii heti koko näytön tilassa

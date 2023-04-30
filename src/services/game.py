@@ -1,4 +1,5 @@
 import random
+import time
 from entities.card import Card
 from entities.card_suit import Suit
 
@@ -6,19 +7,16 @@ from entities.card_suit import Suit
 class Game:
     """Sovelluslogiikasta vastaava luokka"""
 
-    def __init__(self, level, root):
+    def __init__(self, level):
         """ Luokan konstruktori, joka antaa kortille nämä tiedot.
         Args:
             level: pelin vaikeustaso
             (kertoo, kuinka paljon kortteja menee mille tasolle)
-            root: Ohjelman käyttöliitymän juuri-ikkuna-elementti
-        Funktio:
-            create_game: luo pelin
         """
         self.level = level
         self.deck = []
         self.start_time = None
-        self._root = root
+        self.stop_time = None
         self.cards_per_suit = level.cards_per_suit()
 
         self.create_game()
@@ -73,8 +71,8 @@ class Game:
 
         same = visible_list[0].is_same(visible_list[1])
         if same:
-            self.turn_card(visible_list[0])
-            self.turn_card(visible_list[1])
+            visible_list[0].turn_card()
+            visible_list[1].turn_card()
             card = self.deck.pop(index_list[1])
             card = self.deck.pop(index_list[0])
 
@@ -91,6 +89,41 @@ class Game:
                 visible_list.append(card)
         return len(visible_list)
 
-    def turn_card(self, card):
-        """ Kääntää kortin. """
-        card.display = not card.display
+    def handle_cardback(self, card):
+        """ Kääntää kortin, näyttää kortin, lisää kortit listaan,
+        tarkistaa, onko kortit parit ja poistaa kortit, jos on.
+        Lopulta katsoo, onko peli suoritettu loppuun.
+        """
+        if card.card.display is True:
+            return
+        card.card.turn_card()
+        card.show_card()
+        cards = self.get_visible_cards()
+        if cards != 2:
+            return
+        card.view.update_screen()
+        time.sleep(0.7)
+        same = self.find_pairs()
+        if same[0]:
+            same[1].button.destroy()
+            same[2].button.destroy()
+        else:
+            same[1].turn_card()
+            same[2].turn_card()
+            same[1].ui_card.show_cardback()
+            same[2].ui_card.show_cardback()
+
+        self.win(card.view)
+
+    def win(self, view):
+        """ Tarkistaa, että onko peli voitettu eli korttipakka lista on tyhjä. 
+        Lopettaa ajastimen, jos peli on loppunut. 
+        Lisää repositorioon pelisuoritusajan.
+        """
+        if len(self.get_deck()) == 0:
+            self.stop_time = time.time()
+            start_time = self.start_time
+            view.ui.gamestatitics.add_game_score(
+                self.level, self.stop_time-start_time)
+
+            view.win()

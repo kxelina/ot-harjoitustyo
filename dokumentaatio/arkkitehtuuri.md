@@ -37,7 +37,8 @@ class Game{
     - level
     - deck
     - start_time
-    - root
+    - stop_time
+    - cards_per_suit
 }
 Card --> Suit
 Game --> Card
@@ -48,7 +49,9 @@ Näitä ovat esimerkiksi:
 - create_game (luo pelin)
 - place_cards (kertoo kortille, missä sen paikka on)
 - find_pairs (tarkistaa, että onko valitut kortit pari)
-- check_card (päivittää näkymää ja kustsuu find_pairs funktiota)
+- get_visible_cards (laittaa listaan oikeinpäin käänetyt kortit)
+- handle_cardback (mitä kortille tehdään, kun pelaajaa valitsee kortin)
+- win (tarkistaa pelin voiton)
 
 Pakkauskaaviossa näkyy, miten UI luokka, Game luokka ja [GameStatistics](../repositories/game_statitics_repository.py) repositorio  on keskenään linkitettyjä. Pelissä UI:n [Game_view](../ui/game_view.py)  luokka tallentaa pelin päädettyä suorituksen ajan repositorioon.
 
@@ -67,12 +70,11 @@ sequenceDiagram
     UI ->> Game: turn card
     Game ->> UI: show card
     UI ->> Game: get visible cards
-    Game ->> Game: check card
     Game ->> Game: find pairs
     Game ->> UI: turn card (if not same)
     UI ->> UI: show card back
     Game ->> Game: deck.pop(card) (if same)
-    Game ->> UI: win (if len(deck)=0)
+    Game ->> Game: win (if len(deck)=0)
 ```
 
 Kun pelaaja on voittanut pelin.
@@ -81,7 +83,8 @@ Kun pelaaja on voittanut pelin.
 sequenceDiagram
     participant UI
     participant G as Gamestatitics
-    UI --> G: add game score
+    participant Game
+    Game --> G: add game score
     G --> UI: get top5 best score
 ```    
 

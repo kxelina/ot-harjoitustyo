@@ -15,12 +15,11 @@ poetry run invoke start
 Kun peli käynnistetään, näkyy etusivu:
 ![etusivu](./kuvat/etusivu.png)
 
-Paina o nappulasta, jotta peli on koko ruudun tilassa.
 
 Painamalla game instructions voi nähdä ohjeen, miten peliä pelataan.
 ![howtoplay](./kuvat/how_to_play.png)
 
-Jos haluaa poistua pelistä, niin voi painaa x nappulaa yläkulmasta.
+Jos haluaa poistua pelistä, niin voi painaa Quit Game nappulaa alakulmasta.
 
 ## Peli näkymä
 Painamalla Play Easy avaa peli näkymän easy tasolle.

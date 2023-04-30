@@ -69,3 +69,7 @@ class Card:
     def set_card_on_table(self, column, row):
         self.column = column
         self.row = row
+
+    def turn_card(self):
+        """ Kääntää kortin. """
+        self.display = not self.display

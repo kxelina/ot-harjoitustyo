@@ -18,13 +18,12 @@ class Game_view:
             ui: merkkijonoarvo, joka kertoo ui luokan.
         """
         self._root = root
-        self._root.geometry("1600x950")
         self._canvas = None
         self._handle_welcome = handle_welcome
         self._level = level
         self.stop_time = None
         self.backimage = self.create_back_image()
-        self.game = Game(level, self._root)
+        self.game = Game(level)
         self.ui = ui
 
         self._initialize()
@@ -126,18 +125,15 @@ class Game_view:
         if self.stop_time == None:
             self.update = self.label.after(200, self.update_time)
 
-    def win(self):
-        """ Tarkistaa, että onko peli voitettu eli korttipakka lista on tyhjä. Lopettaa ajastimen, jos peli on loppunut. 
-        Lisää repositorioon pelisuoritusajan.
-        """
-        if len(self.game.get_deck()) == 0:
-            label = tk.Label(master=self._canvas, text="CONGRATULATIONS<3", font=(
-                "Times New Roman", 80), bg="white", fg="light sea green")
-            label.pack(pady=350)
-            self.back.config(text="Back to menu")
+    def update_screen(self):
+        """ Päivittä näytön."""
+        self._root.update()
 
-            self.stop_time = time.time()
-            start_time = self.game.start_time
-            self.label.after_cancel(self.update)
-            self.ui.gamestatitics.add_game_score(
-                self._level, self.stop_time-start_time)
+    def win(self):
+        """ Luo onnittelu teksin ja vaihtaa nappulassa olevan tekstin voiton jälkeen.
+        """
+        label = tk.Label(master=self._canvas, text="CONGRATULATIONS<3", font=(
+            "Times New Roman", 80), bg="white", fg="light sea green")
+        label.pack(pady=350)
+        self.back.config(text="Back to menu")
+        self.label.after_cancel(self.update)

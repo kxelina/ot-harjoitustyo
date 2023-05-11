@@ -4,10 +4,10 @@
 
 Pelissä on tällä hetkellä kolme näkymää, jotka ovat:
 - etusivu
-- pelinohjeet
 - peli
+- pelinohjeet
 
-Kaikki ovat omina luokkina, nimeltä [Welcome_view](../ui/welcome_view.py), [Game_view](../ui/game_view.py) ja [Guide_view](../ui/how_to_play_guide.py). Main kutsuu luokka [UI](../ui/ui.py), joka näyttää nämä näkymät tai poistaa näkymiä.
+Kaikki ovat omina luokkina, nimeltä [Welcome_view](../src/ui/welcome_view.py), [Game_view](../src/ui/game_view.py) ja [Guide_view](../src/ui/how_to_play_guide.py). Main kutsuu luokka [UI](../src/ui/ui.py), joka näyttää nämä näkymät tai poistaa näkymiä.
 
 Game_view luo kortille nappulan, kuvan ja laittaa kortit näkyville oikeille paikoille pelajalle. 
 
@@ -15,7 +15,7 @@ Game_view:ssa on myös metodeja, jotka vastaavat pelin suoritusajan näyttämise
 
 ## Sovelluslogiikka
 
-Luokkassa [Game](../services/game.py) luodaan peli eli siinä tarvitaan luokan [Card](../entities/card.py) tiedot ja kortti tarvitsee luokan [Suit](../entities/card_suit.py) tiedot. Luokka Game tarvitsee myös luokan [Level](../entities/game_level.py) tiedot.
+Luokkassa [Game](../src/services/game.py) luodaan peli eli siinä tarvitaan luokan [Card](../src/entities/card.py) tiedot ja kortti tarvitsee luokan [Suit](../src/entities/card_suit.py) tiedot. Luokka Game tarvitsee myös luokan [Level](../src/entities/game_level.py) tiedot.
 
 ```mermaid
 ---
@@ -55,7 +55,7 @@ Näitä ovat esimerkiksi:
 - handle_card_turn (mitä kortille tehdään, kun pelaajaa valitsee kortin)
 - check_win (tarkistaa pelin voiton)
 
-Pakkauskaaviossa näkyy, miten UI luokka, Game luokka ja [GameStatistics](../repositories/game_statitics_repository.py) repositorio  on keskenään linkitettyjä. Pelissä UI:n [Game_view](../ui/game_view.py)  luokka tallentaa pelin päädettyä suorituksen ajan repositorioon.
+Pakkauskaaviossa näkyy, miten UI luokka, Game luokka ja [GameStatistics](../src/repositories/game_statitics_repository.py) repositorio  on keskenään linkitettyjä. Pelissä Game luokka lisää suoritusajan pelin päädettyä repositorioon.
 
 ![pakkauskuva.png](./kuvat/pakkauskuva.png)
 

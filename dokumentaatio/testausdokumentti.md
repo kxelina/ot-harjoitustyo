@@ -3,16 +3,18 @@ Peli on testattu automatisoidulla unitesteillä.
 
 ## Testit
 Testit ovat jaettu kolmeen osaan:
-- [korttien testit](../tests/card_test.py)
-- [korttipakan testit](../tests/card_deck_test.py)
-- [repositorion testit](../tests/repository_test.py)
+- [korttien testit](../src/tests/card_test.py)
+- [korttipakan testit](../src/tests/card_deck_test.py)
+- [repositorion testit](../src/tests/repository_test.py)
 
 Kortti testiin on tehty ui testi luokka, joka imitoi oikeaa ui luokkaa, jotta luokan Game:in handle_card_turn:iä voisi testata.
 Testissa on käytössä testirepositorio, jotta pelin gamestatiticsrepositorio pysyy koskemattomana.
 
 ### Testikattavuus
 Testikattavuus on 97%, kun testien ulkopuolelle on jätetty käyttöliittymä, testit itse.
+
 ![coverage-report](./kuvat/coverage-report.png)
+
 Testit testaavat suurin osaksi tarpeellisia toimintoja. Testikattavuus voisi olla 100%, mutta sitten tulisi turhia testejä.
 Peliä on myös testattu manuaalisesti ui:n avulla, kun peliä on tehty. Peli on testattu toisella linux koneella käyttöohjeen mukaisesti. 
 

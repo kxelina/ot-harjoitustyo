@@ -1,6 +1,8 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 from entities.game_level import Level
+from repositories.game_statitics_repository import GameStatitics
+from services.game import Game
 
 
 class Welcome_view:
@@ -15,45 +17,48 @@ class Welcome_view:
         """
         self._root = root
         self._root.attributes("-fullscreen", True)
-        self._frame = None
         self._handle_game_instruction = handle_game_instruction
         self.ui = ui
 
         self._initialize()
 
     def _initialize(self):
-        self.background = self.background()
-        self.frame()
-        self.title()
-        self.game_button()
-        self.game_instruction_button()
-        self.show_top_five_score()
-        self.quit_frame()
-        self.quit_button()
+        self.background = self._background()
+        self._frame()
+        self._title()
+        self._game_button()
+        self._game_instruction_button()
+        self._show_top_five_score()
+        self._quit_frame()
+        self._quit_button()
 
     def _handle_game_easy(self):
+        """ Näyttää pelin easy tason näkymän. """
         self.ui._show_game_view(Level.EASY)
 
     def _handle_game_medium(self):
+        """ Näyttää pelin medium tason näkymän. """
         self.ui._show_game_view(Level.MEDIUM)
 
     def _handle_game_hard(self):
+        """ Näyttää pelin hard tason näkymän. """
         self.ui._show_game_view(Level.HARD)
 
     def handle_quit(self):
+        """ Poistaa ui näkymän. """
         self.ui.quit()
 
     def pack(self):
-        """ Näyttää näkymän. """
+        """ Näyttää näkymän taustan. """
         self._frame.pack()
-        self.quit_frame.pack()
+        self._quit_frame.pack()
 
     def destroy(self):
-        """ Poistaa näkymän."""
+        """ Poistaa näkymän taustan."""
         self._frame.destroy()
-        self.quit_frame.destroy()
+        self._quit_frame.destroy()
 
-    def background(self):
+    def _background(self):
         """ Luo taustakuvan pelin etusivulle.
         Returns:
             Palauttaa taustakuvan.
@@ -68,24 +73,24 @@ class Welcome_view:
         label.place(x=0, y=0)
         return bg
 
-    def frame(self):
-        """ Luo laatikon."""
+    def _frame(self):
+        """ Luo taustalaatikon."""
         self._frame = tk.Frame(self._root, bg='light goldenrod yellow', bd=20)
         self._frame.pack(padx=30, pady=40, anchor="ne")
 
-    def quit_frame(self):
-        """ Luo laatikon quit nappulalle."""
-        self.quit_frame = tk.Frame(self._root, bg='steelblue', bd=1)
-        self.quit_frame.pack(padx=10, pady=120, anchor="sw")
+    def _quit_frame(self):
+        """ Luo taustalaatikon quit nappulalle."""
+        self._quit_frame = tk.Frame(self._root, bg='steelblue', bd=1)
+        self._quit_frame.pack(padx=10, pady=100, anchor="sw")
 
-    def title(self):
+    def _title(self):
         """ Luo otsikon."""
         welcome = tk.Label(
             master=self._frame, text="Welcome to memory game", font=("Times New Roman", 55), bg="light goldenrod yellow", fg="steelblue")
         welcome.pack()
 
-    def game_button(self):
-        """ Luo nappulan, jolla pääsee pelamaan peliä easy modessa."""
+    def _game_button(self):
+        """ Luo nappulan, jolla pääsee pelamaan peliä easy, medium ja hard modessa."""
         button_border = tk.Frame(self._frame, highlightbackground="steelblue",
                                  highlightthickness=3, bd=0)
         easy = tk.Button(button_border, text="Play Easy",
@@ -105,7 +110,7 @@ class Welcome_view:
         hard.pack()
         h_button_border.pack(pady=10)
 
-    def game_instruction_button(self):
+    def _game_instruction_button(self):
         """Luo nappulan, jolla pääsee peliohjenäkymään."""
         button_border = tk.Frame(self._frame, highlightbackground="steelblue",
                                  highlightthickness=3, bd=0)
@@ -114,20 +119,21 @@ class Welcome_view:
         instructions_label.pack()
         button_border.pack(pady=10)
 
-    def quit_button(self):
+    def _quit_button(self):
         """Luo nappulan, joka lopettaa pelin."""
-        button_border = tk.Frame(self.quit_frame, highlightbackground="steelblue",
+        button_border = tk.Frame(self._quit_frame, highlightbackground="steelblue",
                                  highlightthickness=3, bd=0)
         quit_label = tk.Button(
             button_border, text="Quit Game", font=("Times New Roman", 40), command=self.handle_quit, bg="pink", fg="steelblue", pady=10)
         quit_label.pack()
-        button_border.pack(padx=100, pady=50, anchor="se")
+        button_border.pack(padx=10, pady=5, anchor="se")
 
-    def show_top_five_score(self):
+    def _show_top_five_score(self):
         """ Näyttää 5 parasta pelin suoritusaikaa."""
-        list = self.ui.gamestatitics.get_best_score()
+        gamestatitics = GameStatitics(Game.get_db_name())
+        list = gamestatitics.get_best_score()
         top5 = [
-            f"score: {round(i[0],2)}, {Level(i[1]).level_to_string()}" for i in list]
+            f"score: {round(i[0],2)} s, {Level(i[1]).level_to_string()}" for i in list]
         str = "\n".join(top5)
         score = tk.Label(
             master=self._frame, text=f"Here are top five score:\n{str}", font=("Times New Roman", 25), bg="light goldenrod yellow", fg="steelblue")

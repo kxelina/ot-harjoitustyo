@@ -9,9 +9,9 @@ Pelissä on tällä hetkellä kolme näkymää, jotka ovat:
 
 Kaikki ovat omina luokkina, nimeltä [Welcome_view](../ui/welcome_view.py), [Game_view](../ui/game_view.py) ja [Guide_view](../ui/how_to_play_guide.py). Main kutsuu luokka [UI](../ui/ui.py), joka näyttää nämä näkymät tai poistaa näkymiä.
 
-Game_view luo kortin kuvan. Käyttöliittymässä on vielä luokka [UiCard](../ui/ui_card.py), joka laittaa kortit näkyville Game_view:hin pelajalle. Se kutsuu luokka Game, jotta pystyy kääntämään kortin. 
+Game_view luo kortille nappulan, kuvan ja laittaa kortit näkyville oikeille paikoille pelajalle. 
 
-Game_view:ssa on myös metodeja, jotka vastaavat pelin suoritusajan näyttämisestä ja kertoo, että onko peli voitettu. 
+Game_view:ssa on myös metodeja, jotka vastaavat pelin suoritusajan näyttämisestä, ajastimen renderöimisestä ja näyttää onnittelu tekstin, kun peli on voitettu. 
 
 ## Sovelluslogiikka
 
@@ -27,7 +27,7 @@ class Card{
     - value
     - display
     - game
-    - ui_card
+    - card_button
     - column
     - row
 }
@@ -35,10 +35,12 @@ class Suit
 class Level
 class Game{
     - level
+    - view
     - deck
     - start_time
     - stop_time
     - cards_per_suit
+    - db_name
 }
 Card --> Suit
 Game --> Card
@@ -50,8 +52,8 @@ Näitä ovat esimerkiksi:
 - place_cards (kertoo kortille, missä sen paikka on)
 - find_pairs (tarkistaa, että onko valitut kortit pari)
 - get_visible_cards (laittaa listaan oikeinpäin käänetyt kortit)
-- handle_cardback (mitä kortille tehdään, kun pelaajaa valitsee kortin)
-- win (tarkistaa pelin voiton)
+- handle_card_turn (mitä kortille tehdään, kun pelaajaa valitsee kortin)
+- check_win (tarkistaa pelin voiton)
 
 Pakkauskaaviossa näkyy, miten UI luokka, Game luokka ja [GameStatistics](../repositories/game_statitics_repository.py) repositorio  on keskenään linkitettyjä. Pelissä UI:n [Game_view](../ui/game_view.py)  luokka tallentaa pelin päädettyä suorituksen ajan repositorioon.
 
@@ -59,33 +61,48 @@ Pakkauskaaviossa näkyy, miten UI luokka, Game luokka ja [GameStatistics](../rep
 
 ## Päätoiminnallisuudet
 
-Pelaaja valitsee kortin ja painaa sitä; sekvenssikaaviona.
+Pelaaja valitsee kortin ja painaa sitä; sekvenssikaaviona. 
 
 ```mermaid
 sequenceDiagram
     actor Player 
     participant UI
     participant Game
-    Player ->> UI: click card
-    UI ->> Game: turn card
-    Game ->> UI: show card
-    UI ->> Game: get visible cards
-    Game ->> Game: find pairs
-    Game ->> UI: turn card (if not same)
-    UI ->> UI: show card back
-    Game ->> Game: deck.pop(card) (if same)
-    Game ->> Game: win (if len(deck)=0)
+    participant Card
+    Player ->> Card: click_card
+    Card ->> Game: handle_card_turn
+    Game ->> Card: turn_card
+    Game ->> UI: show_card
+    Game ->> Game: get_visible_cards
+    Game ->> Game: if cards != 2: return
 ```
 
-Kun pelaaja on voittanut pelin.
+Jos pelaaja on vain valinnut yhden kortin, niin alkaa alusta ja pelaaja valitsee toisen kortin. Sen jälkeen tarkistetaan, onko valitut kortin arvot samoja. (Tämä esimerkki on Easy taso!)
+
+```mermaid
+sequenceDiagram
+    actor Player 
+    participant UI
+    participant Game
+    participant Card
+    Game ->> UI: update_screen
+    Game ->> Game: find_pairs
+    Game ->> Game: check_win
+    Game ->> Card: if same: card_button destroy
+    Game ->> Card: if not same: turn_card
+    Game ->> UI: show_cardback
+    Game ->> UI: if win: win
+```
+
+Kun pelaaja on voittanut pelin. Etusivulla näkyy pelin top5 parasta suoritusaikaa.
 
 ```mermaid
 sequenceDiagram
     participant UI
     participant G as Gamestatitics
     participant Game
-    Game ->> G: add game score
-    G ->> UI: get top5 best score
+    Game ->> G: add_game_score
+    G ->> UI: get_top5_best_score
 ```    
 
 ## Pelin suoritusajan tallentaminen

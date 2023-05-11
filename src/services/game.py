@@ -2,24 +2,37 @@ import random
 import time
 from entities.card import Card
 from entities.card_suit import Suit
+from repositories.game_statitics_repository import GameStatitics
 
 
 class Game:
     """Sovelluslogiikasta vastaava luokka"""
 
-    def __init__(self, level):
+    def __init__(self, level, view, db_name):
         """ Luokan konstruktori, joka antaa kortille nämä tiedot.
         Args:
             level: pelin vaikeustaso
             (kertoo, kuinka paljon kortteja menee mille tasolle)
+            view : antaa pelinäkymän
+            db_name: kertoo pelille tietokannan nimen
         """
         self.level = level
+        self.view = view
         self.deck = []
         self.start_time = None
         self.stop_time = None
         self.cards_per_suit = level.cards_per_suit()
+        self.db_name = Game.get_db_name()
+        if db_name is not None:
+            self.db_name = db_name
 
         self.create_game()
+
+    def get_db_name():
+        return "game"
+
+    def set_timer(self):
+        self.start_time = time.time()
 
     def create_game(self):
         """ Luo pelille kortit eli lisää kortit korttipakkaan. """
@@ -39,17 +52,14 @@ class Game:
 
     def place_cards(self):
         """ Laittaa kortit käyttöliittymässä oikeisiin paikkoihin. """
-        counter = 1
         column = 0
         row = 0
         for card in self.deck:
             card.set_card_on_table(column, row)
             column += 1
-            if counter == self.cards_per_suit:
-                counter = 0
+            if column == self.cards_per_suit:
                 column = 0
                 row += 1
-            counter += 1
 
     def find_pairs(self):
         """ Etsii valituista korteista parit. 
@@ -71,8 +81,6 @@ class Game:
 
         same = visible_list[0].is_same(visible_list[1])
         if same:
-            visible_list[0].turn_card()
-            visible_list[1].turn_card()
             card = self.deck.pop(index_list[1])
             card = self.deck.pop(index_list[0])
 
@@ -89,41 +97,44 @@ class Game:
                 visible_list.append(card)
         return len(visible_list)
 
-    def handle_cardback(self, card):
+    def handle_card_turn(self, card):
         """ Kääntää kortin, näyttää kortin, lisää kortit listaan,
         tarkistaa, onko kortit parit ja poistaa kortit, jos on.
         Lopulta katsoo, onko peli suoritettu loppuun.
         """
-        if card.card.display is True:
+        if card.display is True:
             return
-        card.card.turn_card()
-        card.show_card()
+        card.turn_card()
+        self.view.show_card(card)
         cards = self.get_visible_cards()
         if cards != 2:
             return
-        card.view.update_screen()
-        time.sleep(0.7)
+        self.view.update_screen()
         same = self.find_pairs()
+        win = self.check_win()
+        time.sleep(0.7)
         if same[0]:
-            same[1].button.destroy()
-            same[2].button.destroy()
+            same[1].card_button.destroy()
+            same[2].card_button.destroy()
         else:
             same[1].turn_card()
             same[2].turn_card()
-            same[1].ui_card.show_cardback()
-            same[2].ui_card.show_cardback()
+            self.view.show_cardback(same[1])
+            self.view.show_cardback(same[2])
+        if win:
+            self.view.win()
 
-        self.win(card.view)
-
-    def win(self, view):
-        """ Tarkistaa, että onko peli voitettu eli korttipakka lista on tyhjä. 
+    def check_win(self):
+        """ Tarkistaa, että onko peli voitettu eli korttipakka lista on tyhjä 
+        ja paluttaa True, jos peli on voitettu. 
         Lopettaa ajastimen, jos peli on loppunut. 
         Lisää repositorioon pelisuoritusajan.
         """
-        if len(self.get_deck()) == 0:
+        if not self.get_deck():
             self.stop_time = time.time()
             start_time = self.start_time
-            view.ui.gamestatitics.add_game_score(
+            gamestatitics = GameStatitics(self.db_name)
+            gamestatitics.add_game_score(
                 self.level, self.stop_time-start_time)
-
-            view.win()
+            return True
+        return False

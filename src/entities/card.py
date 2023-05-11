@@ -10,7 +10,7 @@ class Card:
         value: numeroarvo, kuvaa kortin numeroa
         display: Boolean-arvo, kuvaa, että onko kortti oikeinpäin vai väärinpäin
         game: objekti, kuvaa nykyistä peliä
-        ui_card: esittää korttia ui:ssa
+        card_button: esittää korttia ui:ssa
         column: kertoo kortin column tiedon
         row: kertoo kortin row tiedon
     """
@@ -26,12 +26,12 @@ class Card:
         self.value = value
         self.display = False
         self.game = game
-        self.ui_card = None
+        self.card_button = None
         self.column = None
         self.row = None
 
-    def set_button(self, ui_card):
-        self.ui_card = ui_card
+    def set_button(self, card_button):
+        self.card_button = card_button
 
     def suitname(self):
         return self.suit.name
@@ -73,3 +73,7 @@ class Card:
     def turn_card(self):
         """ Kääntää kortin. """
         self.display = not self.display
+
+    def click_card(self):
+        """ Kun pelaaja painaa korttia, niin menee sovelluslogikkaan."""
+        self.game.handle_card_turn(self)

@@ -18,3 +18,7 @@
 - lisätty medium ja hard tasot
 - lisäytty testejä ja laitettu testit erikseen
 - lisätty quit nappula ja peli toimii heti koko näytön tilassa
+## viikko7
+- otettu UiCard luokka pois ja siiretty sisältö Gameview:lle
+- otettu tietokannan yhteys pois UI:sta
+- lisätty testejä

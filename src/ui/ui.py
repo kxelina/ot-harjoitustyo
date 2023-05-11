@@ -1,21 +1,18 @@
 from ui.welcome_view import Welcome_view
 from ui.game_view import Game_view
 from ui.how_to_play_guide import Guide_view
-from repositories.game_statitics_repository import GameStatitics
 
 
 class UI:
     """Sovelluksen käyttöliittymästä vastaava luokka."""
 
-    def __init__(self, root, db):
+    def __init__(self, root):
         """Luokan konstruktori. Luo uuden käyttöliittymästä vastaavan luokan.
         Args:
             root: TKinter-elementti, joka alustaa käyttöliittymän näkymän.
-            db: ottaa yhteyden database:iin
         """
         self._root = root
         self._current_view = None
-        self.gamestatitics = GameStatitics(db)
 
     def start(self):
         self._show_welcome_view()

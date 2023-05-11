@@ -1,12 +1,15 @@
+from database_connection import database_connection
+
+
 class GameStatitics:
-    def __init__(self, db_connection):
-        self.connection = db_connection
+    def __init__(self, db_name):
+        self.db_connection = database_connection(db_name)
 
     def add_game_score(self, level, score):
-        self.connection.execute("INSERT INTO Results (level, score) VALUES (?, ?)", [
+        self.db_connection.execute("INSERT INTO Results (level, score) VALUES (?, ?)", [
             level.value, score])
 
     def get_best_score(self):
-        top5 = self.connection.execute(
+        top5 = self.db_connection.execute(
             "SELECT score, level From Results ORDER BY score LIMIT 5 ").fetchall()
         return top5

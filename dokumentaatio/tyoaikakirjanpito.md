@@ -21,4 +21,6 @@
 |    28.4   |   5  | Lisäsin medium ja hard tasot peliin ja lisäisin testejä, lisätty uusi luokka Level|
 |    29.4   |   2  | otettu turhat komentit ja printti komennot pois, lisätty testejä, muokattu koodia siistimmäksi|
 |    30.4   |   4  | siiretty pelilogikkaa pois käyttöliittymästä, lisätty quit nappula, laitettu peli koko näytön tilaan suoraan, korjattu virhe, jos painaa samaa korttia, niin se ei jää auki|
-| yht   | 70  | | 
+|    9.5   |   5  | käyty koodikatselmoinnissa, siiretty uicard luokka gameview:lle, otettu database connection pois ui:sta, muokattu testejä, otettu turhat muuttujat pois, muutettu funktiot ja attribbuutit yksitysiksi, jossa on järkevä|
+|    10.5   |   5  | muokattu arkkitehtuuri tiedostoa muokatun koodin takia, tehty lisää testejä, tehty testausdokumentaatiota|
+| yht   | 80  | | 

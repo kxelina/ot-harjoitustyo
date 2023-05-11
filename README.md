@@ -7,6 +7,7 @@ Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero. Pelaaja voi val
 - [työaikakirjanpito](./dokumentaatio/tyoaikakirjanpito.md)
 - [changelog](./dokumentaatio/changelog.md)
 - [arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
+- [testausdokumentti](./dokumentaatio/testausdokumentti.md)
 
 ## Asennus
 ### Asenna riippuvuudet:

@@ -11,16 +11,15 @@ class Guide_view:
             handle_welcome: kutsuttava arvo, jota kutsutaan kun palataan takaisin etusivulle.
         """
         self._root = root
-        self._frame = None
         self._handle_welcome = handle_welcome
 
         self._initialize()
 
     def _initialize(self):
-        self.frame()
-        self.label()
-        self.button()
-        self.textbox()
+        self._frame()
+        self._label()
+        self._button()
+        self._textbox()
 
     def pack(self):
         """ Näyttää näkymän. """
@@ -30,18 +29,18 @@ class Guide_view:
         """ Poistaa näkymän."""
         self._frame.destroy()
 
-    def frame(self):
+    def _frame(self):
         """ Luo näkymän taustan. """
         self._frame = tk.Frame(self._root, bg='pink', bd=80)
         self._frame.pack(expand=True, fill=tk.BOTH)
 
-    def label(self):
+    def _label(self):
         """ Luo näkymän otsikon. """
         title = tk.Label(master=self._frame, text="How to play",
                          font=("Times New Roman", 55), bg="pink", fg="pale violet red")
         title.pack()
 
-    def button(self):
+    def _button(self):
         """ Luo nappulan, jotta pääse takaisin etusivulle. """
         button_border = tk.Frame(self._frame, highlightbackground="pale violet red",
                                  highlightthickness=3, bd=0)
@@ -50,7 +49,7 @@ class Guide_view:
         back.pack()
         button_border.pack(pady=20)
 
-    def textbox(self):
+    def _textbox(self):
         """ Luo teksilaatikon, jossa on pelinohjeet. """
         text = ''' 
         The purpose of game: 

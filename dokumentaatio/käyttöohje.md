@@ -1,5 +1,5 @@
 # Käyttöohje
-Lataa peli viimeisin [release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko6palautus) lähdekoodi ja unzip source code. 
+Lataa peli viimeisin [release](https://github.com/kxelina/python-elinanpeli/releases/tag/loppupalautus) lähdekoodi ja unzip source code. 
 
 ## Pelin käynnistäminen
 Lataa Poetry:

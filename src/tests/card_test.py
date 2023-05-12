@@ -65,7 +65,7 @@ class TestCard(unittest.TestCase):
 
         self.assertEqual(card1.display, True)
 
-        newgame.handle_cardback(card2)
+        newgame.handle_card_turn(card2)
 
         self.assertEqual(card1.display, False)
         self.assertEqual(card2.display, False)

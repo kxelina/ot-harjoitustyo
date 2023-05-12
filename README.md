@@ -11,6 +11,11 @@ Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero. Pelaaja voi val
 
 ## Asennus
 ### Asenna riippuvuudet:
+Linkki Releasiin:
+[Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko6palautus)
+```
+- zip-file pitää purkaa
+```
 Tarkista, onko uusin python versio (joka tukee tkinker:iä):
 
 ```
@@ -18,16 +23,8 @@ python3 --version tai python --version
 ```
 Asenna Poetry:
 ```
-curl -sSL https://install.python-poetry.org | python3 -
-```
-```
 poetry install
 ``` 
-Linkki Releasiin:
-[Release](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko6palautus)
-```
-- zip-file pitää purkaa
-```
 ## Komennot
 ### Peli käynnistyy:
 ```

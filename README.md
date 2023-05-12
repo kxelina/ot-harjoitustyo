@@ -11,7 +11,7 @@ Muistipelissä on tarkoitus etsiä pareja, jossa on sama numero. Pelaaja voi val
 
 ## Asennus
 ### Asenna riippuvuudet:
-Linkki [Releasiin](https://github.com/kxelina/python-elinanpeli/releases/tag/viikko6palautus)
+Linkki [Releasiin](https://github.com/kxelina/python-elinanpeli/releases/tag/loppupalautus)
 
 zip-file pitää purkaa
 
